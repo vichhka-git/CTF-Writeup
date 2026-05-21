@@ -137,7 +137,7 @@ curl -s "$URL/x.php?c=cat%20/app/index.php"
 The flag is hidden as a PHP comment in `index.php`:
 
 ```php
-<?php /* ^FLAG^...$FLAG$ */ ?>
+<?php /* ^FLAG^<redacted>$FLAG$ */ ?>
 ```
 
 > **Flag 1:** `^FLAG^<redacted>$FLAG$`
