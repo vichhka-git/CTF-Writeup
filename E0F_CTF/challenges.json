@@ -1,0 +1,402 @@
+[
+  {
+    "id": "e418bf36-eb81-4589-ba4c-db3806fe896b",
+    "name": "Snake Oil Bytecode",
+    "description": "***Guaranteed 100% organic Python, now with fewer readable source lines.***",
+    "category": "rev",
+    "author": "seraphina.sh",
+    "files": [
+      {
+        "name": "chall.pyc",
+        "url": "/uploads/b64f95f6bc2686a0bc7b52fd25cf7c905159e6983d02f72cb079dc25697cf6dd/chall.pyc",
+        "size": 4023
+      }
+    ],
+    "points": 139,
+    "solves": 20,
+    "sortWeight": null,
+    "tags": [
+      "medium",
+      "py"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "e29d38ef-8585-48bb-8113-71c63c305c5d",
+    "name": "Parallex Engine",
+    "description": "The verdict existed before your answer did.",
+    "category": "rev",
+    "author": "er1c",
+    "files": [
+      {
+        "name": "parallax-engine-player.zip",
+        "url": "/uploads/16085ef71c3780ce67244dbe6736346d927089e5d0d521104087d867038c54f4/parallax-engine-player.zip",
+        "size": 761615
+      }
+    ],
+    "points": 776,
+    "solves": 8,
+    "sortWeight": null,
+    "tags": [
+      "insane"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "c3bbc290-aaa3-4d07-affa-1384d218c72e",
+    "name": "Black Thunk",
+    "description": "It has already decided whether you belong here.",
+    "category": "rev",
+    "author": "er1c",
+    "files": [
+      {
+        "name": "black-thunk.exe",
+        "url": "/uploads/8d2ecc27a7c3702f28556aa7ddf73593f83de1ceef7f57e165f5df8c94f8388f/black-thunk.exe",
+        "size": 8138240
+      }
+    ],
+    "points": 436,
+    "solves": 4,
+    "sortWeight": null,
+    "tags": [
+      "hard"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "af4e2c19-79d7-4fd4-9a21-e3b660c088db",
+    "name": "Unwind Me Maybe",
+    "description": "The last good decision already happened.",
+    "category": "rev",
+    "author": "crash_the0ry",
+    "files": [
+      {
+        "name": "unwind-me-maybe.exe",
+        "url": "/uploads/678202c045f87f2a1349fccb3ee223e70d585868e39ccef99401a08808335205/unwind-me-maybe.exe",
+        "size": 123392
+      }
+    ],
+    "points": 378,
+    "solves": 7,
+    "sortWeight": null,
+    "tags": [
+      "hard"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "a44209fb-211c-435f-b999-9d19ae8837cc",
+    "name": "Hensel & Gretel",
+    "description": "The forest keeps excellent accounts after midnight.",
+    "category": "rev",
+    "author": "crypt0-wizard",
+    "files": [
+      {
+        "name": "hensel-gretel.exe",
+        "url": "/uploads/fc90cdd13358f81a8816ccaf1e3743f46829328a12ee8640673a9e6dc1d7654d/hensel-gretel.exe",
+        "size": 223232
+      }
+    ],
+    "points": 802,
+    "solves": 7,
+    "sortWeight": null,
+    "tags": [
+      "insane"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "70b969e2-732c-4000-a6ad-c85b44d699ee",
+    "name": "Read the Fine Print",
+    "description": "Every good reverser starts by RTFM. We hid the first flag where the real ones always look first.",
+    "category": "misc",
+    "author": "seraphina.sh",
+    "files": [],
+    "points": 61,
+    "solves": 35,
+    "sortWeight": null,
+    "tags": [
+      "w3lcom3"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "68350b80-8298-419e-b6f8-d8cc5294de0a",
+    "name": "Phant0m C4llb4ck",
+    "description": "Something called back, but it never left a number",
+    "category": "rev",
+    "author": "seraphina.sh",
+    "files": [
+      {
+        "name": "phantom-callback.zip",
+        "url": "/uploads/dfe252928f9614b74ab4f0f3011e7bb43f719eb757c88ade58f926b6d0ce781d/phantom-callback.zip",
+        "size": 93252
+      }
+    ],
+    "points": 347,
+    "solves": 9,
+    "sortWeight": null,
+    "tags": [
+      "hard"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "61b2392c-b56e-4117-a987-6158f6ef6c68",
+    "name": "Return to Sender",
+    "description": "Nothing was requested, yet something is missing.",
+    "category": "rev",
+    "author": "crash_the0ry",
+    "files": [
+      {
+        "name": "return-to-sender.tar.gz",
+        "url": "/uploads/dda51738af1c2712e5c886c66cce6f12e402b54b9c0cc4a700f99bd9face6f9b/return-to-sender.tar.gz",
+        "size": 1077
+      }
+    ],
+    "points": 120,
+    "solves": 30,
+    "sortWeight": null,
+    "tags": [
+      "medium"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "537632da-10af-4a41-8aff-1546733e0a61",
+    "name": "Exit Interview",
+    "description": "Nothing important happens while anyone is looking.",
+    "category": "rev",
+    "author": "seraphina.sh",
+    "files": [
+      {
+        "name": "exit-interview.exe",
+        "url": "/uploads/d15218e18f382e9d514c73d6e8e749a33e7ab758105405af3b14e3e77a52081f/exit-interview.exe",
+        "size": 142848
+      }
+    ],
+    "points": 125,
+    "solves": 13,
+    "sortWeight": null,
+    "tags": [
+      "easy"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "49f1fb90-4dc6-4cef-84f0-db5b2b30d664",
+    "name": "Neon Casuality",
+    "description": "Every answer leaves an echo; only one returns.",
+    "category": "rev",
+    "author": "crash_the0ry",
+    "files": [
+      {
+        "name": "neon-causality.zip",
+        "url": "/uploads/eafe6774a4120d2d1186c69aa9354db1d0d450ff09446577f770ec51c59fc059/neon-causality.zip",
+        "size": 78489
+      }
+    ],
+    "points": 752,
+    "solves": 9,
+    "sortWeight": null,
+    "tags": [
+      "insane"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "476e9c68-c777-46b4-ac5f-f10ae9ef621c",
+    "name": "Bit Garden",
+    "description": "The smallest rooms remember ***the loudest guests.***\n",
+    "category": "rev",
+    "author": "crypt0-wizard",
+    "files": [
+      {
+        "name": "bit-garden.exe",
+        "url": "/uploads/401adae96d62632f58b60946384e9e72e315625a4d9a8d88ab7b5d0082d5a22e/bit-garden.exe",
+        "size": 18432
+      }
+    ],
+    "points": 182,
+    "solves": 14,
+    "sortWeight": null,
+    "tags": [
+      "medium"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "386362ba-d426-4d0b-99cb-57f2f649212d",
+    "name": "Gopher Carousel",
+    "description": "The last ticket is still warm.",
+    "category": "rev",
+    "author": "crypt0-wizard",
+    "files": [
+      {
+        "name": "gopher-carousel.exe",
+        "url": "/uploads/892b5382f05fc2c03ad6fc12ecb5903eb349c4fd8309f6a1f87258e4a90a380f/gopher-carousel.exe",
+        "size": 1693184
+      }
+    ],
+    "points": 162,
+    "solves": 13,
+    "sortWeight": null,
+    "tags": [
+      "medium"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "310898f0-0678-44dd-ba2a-971753012b31",
+    "name": "NaN Penguin Cipher",
+    "description": "Tux denies everything...especially the missing homework.",
+    "category": "rev",
+    "author": "crypt0-wizard",
+    "files": [
+      {
+        "name": "nan-penguin.tar.gz",
+        "url": "/uploads/ed263791810e64a59fcd903c7e731a42c49948d8ef85cb3162d2332dc9998735/nan-penguin.tar.gz",
+        "size": 340169
+      }
+    ],
+    "points": 334,
+    "solves": 10,
+    "sortWeight": null,
+    "tags": [
+      "hard"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "27e3107c-60c3-4a67-adce-df67ba9827b7",
+    "name": "Braided Reality",
+    "description": "Something is wrong with reality. Find out what.",
+    "category": "rev",
+    "author": "seraphina.sh",
+    "files": [
+      {
+        "name": "braided_reality",
+        "url": "/uploads/b1747e677686838deb4729486484f7767c963b9979c09903ac35782ef0f42f44/braided_reality",
+        "size": 22672
+      }
+    ],
+    "points": 674,
+    "solves": 13,
+    "sortWeight": null,
+    "tags": [
+      "insane"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  },
+  {
+    "id": "1046a4a5-0746-463b-9543-ade438a7dd2d",
+    "name": " Token Curtain",
+    "description": "The cast remembers every cue. The audience remembers none.",
+    "category": "rev",
+    "author": "seraphina.sh",
+    "files": [
+      {
+        "name": "token-curtain.zip",
+        "url": "/uploads/28246dd9e1d57a4b78090cae1b6a10da536ab5e4e5faa8ebd92601bc1ab0d835/token-curtain.zip",
+        "size": 76873
+      }
+    ],
+    "points": 347,
+    "solves": 9,
+    "sortWeight": null,
+    "tags": [
+      "medium"
+    ],
+    "instancerLifetime": null,
+    "instancerExtendable": true,
+    "instancerStoppable": true,
+    "instancerActions": [],
+    "adminBotInputs": null,
+    "hasFlag": true,
+    "scoringKind": "decay"
+  }
+]

@@ -1,0 +1,211 @@
+[
+  {
+    "name": "Snake Oil Bytecode",
+    "category": "rev",
+    "points": 139,
+    "author": "seraphina.sh",
+    "solves": 20,
+    "tags": [
+      "medium",
+      "py"
+    ],
+    "directory": "rev_Snake_Oil_Bytecode",
+    "files": [
+      "chall.pyc"
+    ]
+  },
+  {
+    "name": "Parallex Engine",
+    "category": "rev",
+    "points": 776,
+    "author": "er1c",
+    "solves": 8,
+    "tags": [
+      "insane"
+    ],
+    "directory": "rev_Parallex_Engine",
+    "files": [
+      "parallax-engine-player.zip"
+    ]
+  },
+  {
+    "name": "Black Thunk",
+    "category": "rev",
+    "points": 436,
+    "author": "er1c",
+    "solves": 4,
+    "tags": [
+      "hard"
+    ],
+    "directory": "rev_Black_Thunk",
+    "files": [
+      "black-thunk.exe"
+    ]
+  },
+  {
+    "name": "Unwind Me Maybe",
+    "category": "rev",
+    "points": 378,
+    "author": "crash_the0ry",
+    "solves": 7,
+    "tags": [
+      "hard"
+    ],
+    "directory": "rev_Unwind_Me_Maybe",
+    "files": [
+      "unwind-me-maybe.exe"
+    ]
+  },
+  {
+    "name": "Hensel & Gretel",
+    "category": "rev",
+    "points": 802,
+    "author": "crypt0-wizard",
+    "solves": 7,
+    "tags": [
+      "insane"
+    ],
+    "directory": "rev_Hensel__Gretel",
+    "files": [
+      "hensel-gretel.exe"
+    ]
+  },
+  {
+    "name": "Read the Fine Print",
+    "category": "misc",
+    "points": 61,
+    "author": "seraphina.sh",
+    "solves": 35,
+    "tags": [
+      "w3lcom3"
+    ],
+    "directory": "misc_Read_the_Fine_Print",
+    "files": []
+  },
+  {
+    "name": "Phant0m C4llb4ck",
+    "category": "rev",
+    "points": 347,
+    "author": "seraphina.sh",
+    "solves": 9,
+    "tags": [
+      "hard"
+    ],
+    "directory": "rev_Phant0m_C4llb4ck",
+    "files": [
+      "phantom-callback.zip"
+    ]
+  },
+  {
+    "name": "Return to Sender",
+    "category": "rev",
+    "points": 120,
+    "author": "crash_the0ry",
+    "solves": 30,
+    "tags": [
+      "medium"
+    ],
+    "directory": "rev_Return_to_Sender",
+    "files": [
+      "return-to-sender.tar.gz"
+    ]
+  },
+  {
+    "name": "Exit Interview",
+    "category": "rev",
+    "points": 125,
+    "author": "seraphina.sh",
+    "solves": 13,
+    "tags": [
+      "easy"
+    ],
+    "directory": "rev_Exit_Interview",
+    "files": [
+      "exit-interview.exe"
+    ]
+  },
+  {
+    "name": "Neon Casuality",
+    "category": "rev",
+    "points": 752,
+    "author": "crash_the0ry",
+    "solves": 9,
+    "tags": [
+      "insane"
+    ],
+    "directory": "rev_Neon_Casuality",
+    "files": [
+      "neon-causality.zip"
+    ]
+  },
+  {
+    "name": "Bit Garden",
+    "category": "rev",
+    "points": 182,
+    "author": "crypt0-wizard",
+    "solves": 14,
+    "tags": [
+      "medium"
+    ],
+    "directory": "rev_Bit_Garden",
+    "files": [
+      "bit-garden.exe"
+    ]
+  },
+  {
+    "name": "Gopher Carousel",
+    "category": "rev",
+    "points": 162,
+    "author": "crypt0-wizard",
+    "solves": 13,
+    "tags": [
+      "medium"
+    ],
+    "directory": "rev_Gopher_Carousel",
+    "files": [
+      "gopher-carousel.exe"
+    ]
+  },
+  {
+    "name": "NaN Penguin Cipher",
+    "category": "rev",
+    "points": 334,
+    "author": "crypt0-wizard",
+    "solves": 10,
+    "tags": [
+      "hard"
+    ],
+    "directory": "rev_NaN_Penguin_Cipher",
+    "files": [
+      "nan-penguin.tar.gz"
+    ]
+  },
+  {
+    "name": "Braided Reality",
+    "category": "rev",
+    "points": 674,
+    "author": "seraphina.sh",
+    "solves": 13,
+    "tags": [
+      "insane"
+    ],
+    "directory": "rev_Braided_Reality",
+    "files": [
+      "braided_reality"
+    ]
+  },
+  {
+    "name": " Token Curtain",
+    "category": "rev",
+    "points": 347,
+    "author": "seraphina.sh",
+    "solves": 9,
+    "tags": [
+      "medium"
+    ],
+    "directory": "rev_Token_Curtain",
+    "files": [
+      "token-curtain.zip"
+    ]
+  }
+]
