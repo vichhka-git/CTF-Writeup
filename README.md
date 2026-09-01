@@ -16,8 +16,7 @@ Click any folder below to jump straight to the writeups:
 ## How to Use This Repo
 1. Click any event folder above (or search for the folder name).
 2. Open any `.md` file inside — every challenge has a complete writeup.
-3. Use the **TOC.md** file (if present) for quick navigation.
-4. All solutions include screenshots, code, and the flag!
+3. All solutions include screenshots, code, and the flag!
 
 **Star this repo** if you found it useful 🔥  
 Flag example: `flag{h1dd3en_4ll_0f_th1ngs}`
