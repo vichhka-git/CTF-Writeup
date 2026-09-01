@@ -31,8 +31,6 @@ Only use the networked solvers against challenge instances you are authorized to
 | 19 | Binary Exploitation | [menfess](binary-exploitation/menfess/) | 451 | 8 | Solved | [WRITEUP.md](binary-exploitation/menfess/WRITEUP.md) | [solve_remote.py](binary-exploitation/menfess/solve_remote.py) |
 | 20 | Forensics | [The Apex Affair](forensics/the-apex-affair/) | 500 | 0 | Solved | [WRITEUP.md](forensics/the-apex-affair/WRITEUP.md) | [solve.py](forensics/the-apex-affair/solve.py) |
 
-* IT'S ME, BURHAN! uses a random flag per instance; reproduce the solver against the instance you launch.
-
 ## Layout
 
 Each challenge folder contains a normalized README.md, the durable WRITEUP.md, and any solution source that was safe and useful to publish. The original compfest workspace remains separate from this release tree.
