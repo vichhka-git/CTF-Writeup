@@ -26,7 +26,7 @@ Only use the networked solvers against challenge instances you are authorized to
 | 14 | Miscellaneous | [Jacobian as a Service](miscellaneous/jacobian-as-a-service/) | 356 | 14 | Solved | [WRITEUP.md](miscellaneous/jacobian-as-a-service/WRITEUP.md) | [solve.py](miscellaneous/jacobian-as-a-service/solve.py) |
 | 15 | Web Exploitation | [World Cup](web-exploitation/world-cup/) | 379 | 12 | Solved | [WRITEUP.md](web-exploitation/world-cup/WRITEUP.md) | [solve.py](web-exploitation/world-cup/solve.py) |
 | 16 | Blockchain | [BlockJail](blockchain/blockjail/) | 400 | 12 | Solved | [WRITEUP.md](blockchain/blockjail/WRITEUP.md) | [solve.py](blockchain/blockjail/solve.py) |
-| 17 | Reverse Engineering | [IT'S ME, BURHAN!](reverse-engineering/its-me-burhan/) | 484 | 5 | Solved* | [WRITEUP.md](reverse-engineering/its-me-burhan/WRITEUP.md) | [solve.py](reverse-engineering/its-me-burhan/solve.py) |
+| 17 | Reverse Engineering | [IT'S ME, BURHAN!](reverse-engineering/its-me-burhan/) | 484 | 5 | Solved | [WRITEUP.md](reverse-engineering/its-me-burhan/WRITEUP.md) | [solve.py](reverse-engineering/its-me-burhan/solve.py) |
 | 18 | Binary Exploitation | [The Matrix](binary-exploitation/the-matrix/) | 491 | 4 | Solved | [WRITEUP.md](binary-exploitation/the-matrix/WRITEUP.md) | [solve.py](binary-exploitation/the-matrix/solve.py) |
 | 19 | Binary Exploitation | [menfess](binary-exploitation/menfess/) | 451 | 8 | Solved | [WRITEUP.md](binary-exploitation/menfess/WRITEUP.md) | [solve_remote.py](binary-exploitation/menfess/solve_remote.py) |
 | 20 | Forensics | [The Apex Affair](forensics/the-apex-affair/) | 500 | 0 | Solved | [WRITEUP.md](forensics/the-apex-affair/WRITEUP.md) | [solve.py](forensics/the-apex-affair/solve.py) |
