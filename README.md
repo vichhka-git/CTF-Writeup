@@ -26,6 +26,3 @@ Flag example: `flag{h1dd3en_4ll_0f_th1ngs}`
 This repository is for educational purposes only. All writeups are sourced from public CTF events.
 
 ---
-
-**Last updated:** September 2026  
-**Creator:** y_rose
