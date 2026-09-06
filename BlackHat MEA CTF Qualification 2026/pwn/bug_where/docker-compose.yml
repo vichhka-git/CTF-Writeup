@@ -1,0 +1,18 @@
+services:
+  bug-where:
+    build: .
+    image: bug-where:latest
+    ports:
+      - 5000:5000
+    privileged: true
+    environment:
+      DYN_FLAG: "BHFlagY{DEFAULT}"
+    mem_limit: 1G
+    cpus: 0.25
+    pids_limit: 200
+    healthcheck:
+      test: ["CMD-SHELL", "md5sum -c /etc/healthcheck.txt >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s

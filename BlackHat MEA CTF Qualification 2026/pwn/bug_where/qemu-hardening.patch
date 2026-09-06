@@ -1,0 +1,266 @@
+diff --git a/configs/devices/i386-softmmu/default.mak b/configs/devices/i386-softmmu/default.mak
+index e69de29bb2..5718d6ecbb 100644
+--- a/configs/devices/i386-softmmu/default.mak
++++ b/configs/devices/i386-softmmu/default.mak
+@@ -26,8 +26,13 @@
+ #CONFIG_SGX=n
+
+ # Boards are selected by default, uncomment to keep out of the build.
+-# CONFIG_ISAPC=n
+-# CONFIG_I440FX=n
+-# CONFIG_Q35=n
+-# CONFIG_MICROVM=n
+-# CONFIG_NITRO_ENCLAVE=n
++CONFIG_ISAPC=n
++CONFIG_I440FX=y
++CONFIG_Q35=n
++CONFIG_MICROVM=n
++CONFIG_NITRO_ENCLAVE=n
++CONFIG_VIRTIO_SND=n
++CONFIG_VIRTIO_GPU=n
++CONFIG_VIRTIO_NET=n
++CONFIG_E1000_PCI=n
++CONFIG_E1000E_PCI_EXPRESS=n
+diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+index 0c90ff9b8c..ce9c762ab7 100644
+--- a/hw/acpi/Kconfig
++++ b/hw/acpi/Kconfig
+@@ -4,8 +4,7 @@
+ config ACPI_X86
+     bool
+     select ACPI
+     select ACPI_NVDIMM
+-    select ACPI_CXL
+     select ACPI_CPU_HOTPLUG
+     select ACPI_MEMORY_HOTPLUG
+     select ACPI_HMAT
+diff --git a/hw/acpi/cxl-stub.c b/hw/acpi/cxl-stub.c
+index d026b5da15..1579f40a4d 100644
+--- a/hw/acpi/cxl-stub.c
++++ b/hw/acpi/cxl-stub.c
+@@ -6,7 +6,19 @@
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/cxl.h"
+
++void cxl_build_cedt(GArray *table_offsets, GArray *table_data,
++                    BIOSLinker *linker, const char *oem_id,
++                    const char *oem_table_id, CXLState *cxl_state)
++{
++    g_assert_not_reached();
++}
++
+ void build_cxl_osc_method(Aml *dev)
+ {
+     g_assert_not_reached();
+ }
++
++void build_cxl_dsm_method(Aml *dev)
++{
++    g_assert_not_reached();
++}
+diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+index 040bba20bb..6a653e7119 100644
+--- a/hw/isa/Kconfig
++++ b/hw/isa/Kconfig
+@@ -45,7 +45,6 @@ config PIIX
+     select IDE_PIIX
+     select ISA_BUS
+     select MC146818RTC
+-    select USB_UHCI
+
+ config VT82C686
+     bool
+diff --git a/target/i386/tcg/access.c b/target/i386/tcg/access.c
+index 4b7f2c9f90..3a343b4ab5 100644
+--- a/target/i386/tcg/access.c
++++ b/target/i386/tcg/access.c
+@@ -34,7 +34,7 @@ void access_prepare_mmu(X86Access *ret, CPUX86State *env,
+
+     if (unlikely(size2)) {
+         haddr2 = probe_access(env, vaddr + size1, size2, type, mmu_idx, ra);
+-        if (haddr2 == haddr1 + size1) {
++        if (haddr1 && haddr2 && haddr2 == haddr1 + size1) {
+             ret->size1 = size;
+         } else {
+ #ifdef CONFIG_USER_ONLY
+@@ -55,9 +55,15 @@ void access_prepare(X86Access *ret, CPUX86State *env, vaddr vaddr,
+
+ static void *access_ptr(X86Access *ac, vaddr addr, unsigned len)
+ {
+-    vaddr offset = addr - ac->vaddr;
++    vaddr offset;
+
+-    assert(addr >= ac->vaddr);
++    if (unlikely(addr < ac->vaddr || len > ac->size)) {
++        return NULL;
++    }
++    offset = addr - ac->vaddr;
++    if (unlikely(offset > ac->size - len)) {
++        return NULL;
++    }
+
+     /* No haddr means probe_access wants to force slow path */
+     if (!ac->haddr1) {
+@@ -66,19 +72,18 @@ static void *access_ptr(X86Access *ac, vaddr addr, unsigned len)
+     }
+
+ #ifdef CONFIG_USER_ONLY
+-    assert(offset <= ac->size1 - len);
++    assert(offset <= ac->size1 && len <= ac->size1 - offset);
+     return ac->haddr1 + offset;
+ #else
+-    if (likely(offset <= ac->size1 - len)) {
++    if (likely(offset <= ac->size1 && len <= ac->size1 - offset)) {
+         return ac->haddr1 + offset;
+     }
+-    assert(offset <= ac->size - len);
+     /*
+      * If the address is not naturally aligned, it might span both pages.
+      * Only return ac->haddr2 if the area is entirely within the second page,
+      * otherwise fall back to slow accesses.
+      */
+-    if (likely(offset >= ac->size1)) {
++    if (likely(offset >= ac->size1 && ac->haddr2)) {
+         return ac->haddr2 + (offset - ac->size1);
+     }
+     return NULL;
+diff --git a/target/i386/helper.h b/target/i386/helper.h
+index 884e4007c4..9d4a420231 100644
+--- a/target/i386/helper.h
++++ b/target/i386/helper.h
+@@ -50,5 +50,6 @@ DEF_HELPER_1(clts, void, env)
+
+ #ifndef CONFIG_USER_ONLY
++DEF_HELPER_2(prefetch, void, env, tl)
+ DEF_HELPER_FLAGS_3(set_dr, TCG_CALL_NO_WG, void, env, int, tl)
+ DEF_HELPER_FLAGS_2(get_dr, TCG_CALL_NO_WG, tl, env, int)
+ #endif /* !CONFIG_USER_ONLY */
+diff --git a/target/i386/tcg/decode-new.c.inc b/target/i386/tcg/decode-new.c.inc
+index ab6a984fca..d0a155192e 100644
+--- a/target/i386/tcg/decode-new.c.inc
++++ b/target/i386/tcg/decode-new.c.inc
+@@ -1424,7 +1424,7 @@ static const X86OpEntry opcodes_0F[256] = {
+      */
+     [0x0f] = X86_OP_ENTRY3(3dnow,       P,q, Q,q, I,b,        cpuid(3DNOW)),
+
+-    [0x18] = X86_OP_ENTRY1(NOP,  nop,v),  /* prefetch/reserved NOP */
++    [0x18] = X86_OP_ENTRY1(PREFETCH, M,b),
+     [0x19] = X86_OP_ENTRY1(NOP,  nop,v),  /* reserved NOP */
+     [0x1a] = X86_OP_ENTRY1(multi0F, nop,v, nolea),  /* unconverted MPX */
+     [0x1b] = X86_OP_ENTRY1(multi0F, nop,v, nolea),  /* unconverted MPX */
+diff --git a/target/i386/tcg/emit.c.inc b/target/i386/tcg/emit.c.inc
+index be29d97537..f48a60df29 100644
+--- a/target/i386/tcg/emit.c.inc
++++ b/target/i386/tcg/emit.c.inc
+@@ -2503,6 +2503,11 @@ static void gen_MOV(DisasContext *s, X86DecodedInsn *decode)
+ }
+ #define gen_NOP gen_MOV
+
++static void gen_PREFETCH(DisasContext *s, X86DecodedInsn *decode)
++{
++    gen_helper_prefetch(tcg_env, s->A0);
++}
++
+ static void gen_MASKMOV(DisasContext *s, X86DecodedInsn *decode)
+ {
+     gen_lea_v_seg(s, cpu_regs[R_EDI], R_DS, s->override);
+diff --git a/target/i386/tcg/misc_helper.c b/target/i386/tcg/misc_helper.c
+index a3ae2f191f..c38d55cf32 100644
+--- a/target/i386/tcg/misc_helper.c
++++ b/target/i386/tcg/misc_helper.c
+@@ -21,6 +21,8 @@
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
+ #include "exec/cputlb.h"
++#include "accel/tcg/probe.h"
+ #include "helper-tcg.h"
++#include "seg_helper.h"
+
+ /*
+@@ -41,6 +43,26 @@ void cpu_load_eflags(CPUX86State *env, int eflags, int update_mask)
+         (eflags & update_mask) | 0x2;
+ }
+
++#ifndef CONFIG_USER_ONLY
++void helper_prefetch(CPUX86State *env, target_ulong addr)
++{
++    void *host;
++    volatile unsigned delay = 0;
++    int mmu_idx = cpu_mmu_index_kernel(env);
++    (void)probe_access_flags(env, addr, 1, MMU_DATA_LOAD, mmu_idx,
++                             true, &host, GETPC());
++
++    if (host) {
++        __builtin_prefetch(host, 0, 0);
++    } else {
++        for (unsigned i = 0; i < 256; i++) {
++            delay += i;
++        }
++    }
++    (void)delay;
++}
++#endif
++
+ void helper_into(CPUX86State *env, int next_eip_addend)
+ {
+     int eflags;
+diff --git a/target/i386/tcg/seg_helper.c b/target/i386/tcg/seg_helper.c
+index e7f8e89455..6fa365f419 100644
+--- a/target/i386/tcg/seg_helper.c
++++ b/target/i386/tcg/seg_helper.c
+@@ -342,6 +342,8 @@ static void switch_tss_ra(CPUX86State *env, int tss_selector,
+     target_ulong ptr;
+     X86Access old, new;
+
++    raise_exception_err_ra(env, EXCP0D_GPF, tss_selector & 0xfffc, retaddr);
++
+     type = (e2 >> DESC_TYPE_SHIFT) & 0xf;
+     LOG_PCALL("switch_tss: sel=0x%04x type=%d src=%d\n", tss_selector, type,
+               source);
+@@ -1526,6 +1528,8 @@ void helper_ljmp_protected(CPUX86State *env, int new_cs, target_ulong new_eip,
+         env->eip = new_eip;
+     } else {
+         /* jump to call or task gate */
++        raise_exception_err_ra(env, EXCP0D_GPF, new_cs & 0xfffc, GETPC());
++
+         dpl = (e2 >> DESC_DPL_SHIFT) & 3;
+         rpl = new_cs & 3;
+         cpl = env->hflags & HF_CPL_MASK;
+@@ -1667,6 +1671,9 @@ void helper_lcall_protected(CPUX86State *env, int new_cs, target_ulong new_eip,
+         raise_exception_err_ra(env, EXCP0D_GPF, new_cs & 0xfffc, GETPC());
+     }
+     cpl = env->hflags & HF_CPL_MASK;
++    if (cpl != 0) {
++        raise_exception_err_ra(env, EXCP0D_GPF, new_cs & 0xfffc, GETPC());
++    }
+     LOG_PCALL("desc=%08x:%08x\n", e1, e2);
+
+     sa.env = env;
+@@ -1739,6 +1746,8 @@ void helper_lcall_protected(CPUX86State *env, int new_cs, target_ulong new_eip,
+         }
+     } else {
+         /* check gate type */
++        raise_exception_err_ra(env, EXCP0D_GPF, new_cs & 0xfffc, GETPC());
++
+         type = (e2 >> DESC_TYPE_SHIFT) & 0x1f;
+         dpl = (e2 >> DESC_DPL_SHIFT) & 3;
+         rpl = new_cs & 3;
+@@ -2067,6 +2076,7 @@ static inline void helper_ret_protected(CPUX86State *env, int shift,
+             if (is_iret) {
+                 new_eflags = popl(&sa);
+                 if (new_eflags & VM_MASK) {
++                    raise_exception_err_ra(env, EXCP0D_GPF, 0, retaddr);
+                     goto return_to_vm86;
+                 }
+             }
+@@ -2251,6 +2261,10 @@ void helper_iret_protected(CPUX86State *env, int shift, int next_eip)
+     int tss_selector, type;
+     uint32_t e1, e2;
+
++    if ((env->hflags & HF_CPL_MASK) != 0) {
++        raise_exception_err_ra(env, EXCP0D_GPF, 0, GETPC());
++    }
++
+     /* specific case for TSS */
+     if (env->eflags & NT_MASK) {
+ #ifdef TARGET_X86_64

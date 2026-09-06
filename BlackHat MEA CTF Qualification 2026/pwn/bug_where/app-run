@@ -1,0 +1,38 @@
+#!/bin/sh
+set -eu
+
+if [ -z "${DYN_FLAG:-}" ]; then
+    echo "DYN_FLAG is unavailable" >&2
+    exit 1
+fi
+
+flag_disk="/tmp/flag.raw"
+cleanup() {
+    rm -f "${flag_disk}"
+}
+trap cleanup EXIT INT TERM HUP
+
+dd if=/dev/zero of="${flag_disk}" bs=1M count=1 status=none
+printf '%s\n' "${DYN_FLAG}" | dd of="${flag_disk}" conv=notrunc status=none
+chmod 0600 "${flag_disk}"
+unset DYN_FLAG
+
+exec qemu-system-x86_64 \
+    -m 128M \
+    -smp 2 \
+    -machine pc-i440fx-11.0,usb=off,vmport=off,acpi=on,smm=off \
+    -accel tcg,thread=single \
+    -global apic.vapic=off \
+    -nodefaults \
+    -no-user-config \
+    -display none \
+    -serial stdio \
+    -kernel /app/bzImage \
+    -initrd /app/initramfs.cpio.gz \
+    -append "console=ttyS0 quiet panic=-1 oops=panic kaslr" \
+    -drive "file=${flag_disk},format=raw,if=ide,index=1" \
+    -monitor none \
+    -no-reboot \
+    -cpu qemu64 \
+    -sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny \
+    2>&1

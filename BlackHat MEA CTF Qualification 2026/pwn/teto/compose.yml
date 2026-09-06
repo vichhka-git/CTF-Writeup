@@ -1,0 +1,9 @@
+services:
+  teto:
+    build: .
+    ports:
+      - 5000:5000
+    privileged: true
+    mem_limit: 1G
+    cpus: 0.25
+    pids_limit: 200
