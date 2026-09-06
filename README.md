@@ -12,6 +12,7 @@ Click any folder below to jump straight to the writeups:
 - **[E0F CTF](/vichhka-git/CTF-Writeup/tree/main/E0F_CTF)**  
 - **[GrabCON CTF 2021](/vichhka-git/CTF-Writeup/tree/main/GrabCON%20CTF%202021)**  
 - **[Hacker101 CTF](/vichhka-git/CTF-Writeup/tree/main/Hacker101%20CTF)**
+- **[Blackhat MEA CTF Qualification 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/BlackHat%20MEA%20CTF%20Qualification%202026)**
 
 ## How to Use This Repo
 1. Click any event folder above (or search for the folder name).
