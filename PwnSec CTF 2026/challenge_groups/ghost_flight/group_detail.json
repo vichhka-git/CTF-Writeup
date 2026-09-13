@@ -1,0 +1,69 @@
+{
+  "slug": "ghost-flight",
+  "name": "Ghost Flight",
+  "nature": "BlueTeam",
+  "type": "Classic",
+  "description": "Trouble follows <b>Ge0caching</b> wherever they go. In <b>September 2016</b> our\nuser took a flight from <b>Shenzhen Bao'an Airport</b> to\n<b>Hangzhou Xiaoshan Airport</b>.\n<br><br>\nIdentify the aircraft used for that flight and trace what became of it. The\naircraft is no longer in service and has since been withdrawn. In the same year as\nthe user's flight, another aircraft of the same model operated by the same airline\nwas involved in an onboard fire incident: the first officer smoked in the cockpit,\ndropped a lit cigarette into the oxygen mask container, then mistakenly switched\nthe oxygen system to emergency mode (high oxygen flow), causing a fire that was\nextinguished with a bottle of water.\n<br/><br/><b>- @S4LEM</b>\n",
+  "publicFilesUrl": null,
+  "ctfAttachmentPassword": "infected",
+  "attachmentFileOwner": "y_rose",
+  "attachmentFileGroup": "Dark_Matter",
+  "isDeployable": false,
+  "deployment": null,
+  "tasks": [
+    {
+      "slug": "ghost-flight---1---the-aircraft",
+      "name": "Ghost Flight - 1 - The Aircraft",
+      "points": 1,
+      "difficulty": "Easy",
+      "solvesCount": 52,
+      "isSolved": false,
+      "locked": false
+    },
+    {
+      "slug": "ghost-flight---2---withdrawn-from-use",
+      "name": "Ghost Flight - 2 - Withdrawn From Use",
+      "points": 1,
+      "difficulty": "Easy",
+      "solvesCount": 52,
+      "isSolved": false,
+      "locked": false
+    },
+    {
+      "slug": "ghost-flight---3---storage-location",
+      "name": "Ghost Flight - 3 - Storage Location",
+      "points": 1,
+      "difficulty": "Easy",
+      "solvesCount": 44,
+      "isSolved": false,
+      "locked": false
+    },
+    {
+      "slug": "ghost-flight---4---final-flight",
+      "name": "Ghost Flight - 4 - Final Flight",
+      "points": 1,
+      "difficulty": "Easy",
+      "solvesCount": 48,
+      "isSolved": false,
+      "locked": false
+    },
+    {
+      "slug": "ghost-flight---5---the-twin-s-fire",
+      "name": "Ghost Flight - 5 - The Twin's Fire",
+      "points": 1,
+      "difficulty": "Easy",
+      "solvesCount": 49,
+      "isSolved": false,
+      "locked": false
+    },
+    {
+      "slug": "ghost-flight---6---claim-your-points",
+      "name": "Ghost Flight - 6 - Claim your points",
+      "points": 181,
+      "difficulty": "Easy",
+      "solvesCount": 43,
+      "isSolved": false,
+      "locked": false
+    }
+  ]
+}

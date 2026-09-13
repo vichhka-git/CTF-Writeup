@@ -1,0 +1,347 @@
+{
+  "state": "Released",
+  "slug": "ghost-flight---2---withdrawn-from-use",
+  "name": "Ghost Flight - 2 - Withdrawn From Use",
+  "description": "For that aircraft, determine the date it was withdrawn from use.\n<br><br>\n<b>Answer format:</b> <code>DateOfWFU(DD/MM/YYYY)</code>\n<br><br>\n<b>Example:</b> <code>05/11/2020</code>\n",
+  "points": 1,
+  "difficulty": "Easy",
+  "solvesCount": 53,
+  "category": "OSINT",
+  "publicFilesUrl": null,
+  "ctfAttachmentPassword": "infected",
+  "attachmentFileOwner": "y_rose",
+  "attachmentFileGroup": "Dark_Matter",
+  "isTeamsMode": true,
+  "solves": [
+    {
+      "user": "dyh18",
+      "team": "ZapBD",
+      "slug": "zapbd",
+      "createdAt": "2026-09-12T18:40:15.029Z"
+    },
+    {
+      "user": "W4llz",
+      "team": "W4llz",
+      "slug": "w4llz",
+      "createdAt": "2026-09-12T18:41:07.907Z"
+    },
+    {
+      "user": "Tara1",
+      "team": "Ducks-Can-Break-Anything",
+      "slug": "ducks-can-break-anything",
+      "createdAt": "2026-09-12T18:43:12.707Z"
+    },
+    {
+      "user": "JohnDoers",
+      "team": "MindCrafters",
+      "slug": "mindcrafters",
+      "createdAt": "2026-09-12T18:45:06.553Z"
+    },
+    {
+      "user": "youngdu",
+      "team": "youngdu",
+      "slug": "youngdu",
+      "createdAt": "2026-09-12T18:46:39.991Z"
+    },
+    {
+      "user": "zwadhams",
+      "team": "learn2ctf",
+      "slug": "learn2ctf",
+      "createdAt": "2026-09-12T18:50:46.717Z"
+    },
+    {
+      "user": "Maybe_basel",
+      "team": "0x34",
+      "slug": "0x34",
+      "createdAt": "2026-09-12T18:53:45.029Z"
+    },
+    {
+      "user": "ANormalStick",
+      "team": "0xfun",
+      "slug": "0xfun",
+      "createdAt": "2026-09-12T19:02:36.542Z"
+    },
+    {
+      "user": "nameless",
+      "team": "nameless404",
+      "slug": "nameless404",
+      "createdAt": "2026-09-12T19:04:00.772Z"
+    },
+    {
+      "user": "T4MER",
+      "team": "T4MER",
+      "slug": "t4mer",
+      "createdAt": "2026-09-12T19:04:56.390Z"
+    },
+    {
+      "user": "Moltrax",
+      "team": "AltayCTF",
+      "slug": "altayctf",
+      "createdAt": "2026-09-12T19:06:15.290Z"
+    },
+    {
+      "user": "zzzz",
+      "team": "zzzz",
+      "slug": "zzzz",
+      "createdAt": "2026-09-12T19:09:19.810Z"
+    },
+    {
+      "user": "kuro",
+      "team": "404squad",
+      "slug": "404squad",
+      "createdAt": "2026-09-12T19:09:57.796Z"
+    },
+    {
+      "user": "sh1nY",
+      "team": "Mollu",
+      "slug": "mollu",
+      "createdAt": "2026-09-12T19:10:31.821Z"
+    },
+    {
+      "user": "zEPHYR31337",
+      "team": "Skaunepatrullen",
+      "slug": "skaunepatrullen",
+      "createdAt": "2026-09-12T19:11:56.278Z"
+    },
+    {
+      "user": "Luzaurus",
+      "team": "H5X",
+      "slug": "h5x",
+      "createdAt": "2026-09-12T19:18:40.353Z"
+    },
+    {
+      "user": "0WL",
+      "team": "P3ak",
+      "slug": "p3ak",
+      "createdAt": "2026-09-12T19:20:51.848Z"
+    },
+    {
+      "user": "RCEs",
+      "team": "RCEs",
+      "slug": "rces",
+      "createdAt": "2026-09-12T19:33:57.886Z"
+    },
+    {
+      "user": "0xL4ugh",
+      "team": "0xL4ugh",
+      "slug": "0xl4ugh",
+      "createdAt": "2026-09-12T19:39:09.914Z"
+    },
+    {
+      "user": "santhosh",
+      "team": "ElSindicatoBinario",
+      "slug": "elsindicatobinario",
+      "createdAt": "2026-09-12T19:55:24.407Z"
+    },
+    {
+      "user": "0xGameOverR00t",
+      "team": "AsHighasHonor",
+      "slug": "ashighashonor",
+      "createdAt": "2026-09-12T19:59:29.926Z"
+    },
+    {
+      "user": "ipzen",
+      "team": "Dunderpatrullen",
+      "slug": "dunderpatrullen",
+      "createdAt": "2026-09-12T20:07:46.813Z"
+    },
+    {
+      "user": "dcua",
+      "team": "dcua",
+      "slug": "dcua",
+      "createdAt": "2026-09-12T20:22:59.803Z"
+    },
+    {
+      "user": "hadiro0023",
+      "team": "Avengers",
+      "slug": "avengers",
+      "createdAt": "2026-09-12T20:27:22.211Z"
+    },
+    {
+      "user": "JordanSec",
+      "team": "JordanSec",
+      "slug": "jordansec",
+      "createdAt": "2026-09-12T20:27:32.639Z"
+    },
+    {
+      "user": "P4wN",
+      "team": "HackingCATminatorS",
+      "slug": "hackingcatminators",
+      "createdAt": "2026-09-12T20:47:41.064Z"
+    },
+    {
+      "user": "legendile7",
+      "team": "TheHackPackUGA",
+      "slug": "thehackpackuga",
+      "createdAt": "2026-09-12T20:55:55.317Z"
+    },
+    {
+      "user": "georgrybski",
+      "team": "rybskiworks",
+      "slug": "rybskiworks",
+      "createdAt": "2026-09-12T21:01:40.875Z"
+    },
+    {
+      "user": "FazeCT",
+      "team": "StudSec",
+      "slug": "studsec",
+      "createdAt": "2026-09-12T21:03:06.070Z"
+    },
+    {
+      "user": "sl0p1",
+      "team": "Neomware",
+      "slug": "neomware",
+      "createdAt": "2026-09-12T21:05:57.933Z"
+    },
+    {
+      "user": "TheFlatNetworkSociety",
+      "team": "TheFlatNetworkSociety",
+      "slug": "theflatnetworksociety",
+      "createdAt": "2026-09-12T21:24:12.455Z"
+    },
+    {
+      "user": "PolyNov08",
+      "team": "Team_Pri5m",
+      "slug": "team_pri5m",
+      "createdAt": "2026-09-12T21:36:45.838Z"
+    },
+    {
+      "user": "Bthanh",
+      "team": "TraChanhHV4",
+      "slug": "trachanhhv4",
+      "createdAt": "2026-09-12T21:56:30.343Z"
+    },
+    {
+      "user": "erouter",
+      "team": "BITSkrieg",
+      "slug": "bitskrieg",
+      "createdAt": "2026-09-12T22:37:11.026Z"
+    },
+    {
+      "user": "vwv",
+      "team": "tttest",
+      "slug": "tttest",
+      "createdAt": "2026-09-12T22:39:00.118Z"
+    },
+    {
+      "user": "JordanSec_Girls",
+      "team": "JordanSec_Girls",
+      "slug": "jordansec_girls",
+      "createdAt": "2026-09-12T22:50:40.655Z"
+    },
+    {
+      "user": "jitimod130",
+      "team": "OxV01D",
+      "slug": "oxv01d",
+      "createdAt": "2026-09-12T23:13:58.517Z"
+    },
+    {
+      "user": "hambugi",
+      "team": "CheongA",
+      "slug": "cheonga",
+      "createdAt": "2026-09-12T23:22:40.694Z"
+    },
+    {
+      "user": "mounte",
+      "team": "Shellskapsresan",
+      "slug": "shellskapsresan",
+      "createdAt": "2026-09-12T23:24:37.900Z"
+    },
+    {
+      "user": "n3wbie",
+      "team": "H3XR41D",
+      "slug": "h3xr41d",
+      "createdAt": "2026-09-12T23:45:03.509Z"
+    },
+    {
+      "user": "funs1ze_",
+      "team": "perimeter",
+      "slug": "perimeter",
+      "createdAt": "2026-09-12T23:51:37.576Z"
+    },
+    {
+      "user": "0xLUNA",
+      "team": "SPAIN_ECSC_2026",
+      "slug": "spain_ecsc_2026",
+      "createdAt": "2026-09-12T23:52:41.125Z"
+    },
+    {
+      "user": "Luki1235512",
+      "team": "Pup4s",
+      "slug": "pup4s",
+      "createdAt": "2026-09-12T23:56:44.213Z"
+    },
+    {
+      "user": "Kzl3",
+      "team": "NOT_TODAY",
+      "slug": "not_today",
+      "createdAt": "2026-09-12T23:58:32.331Z"
+    },
+    {
+      "user": "moderncyborgssec_player",
+      "team": "ModernCyborgsSec",
+      "slug": "moderncyborgssec",
+      "createdAt": "2026-09-13T00:07:42.406Z"
+    },
+    {
+      "user": "zap1337",
+      "team": "v1olet",
+      "slug": "v1olet",
+      "createdAt": "2026-09-13T00:11:21.784Z"
+    },
+    {
+      "user": "MS4WR4",
+      "team": "0TR4C3",
+      "slug": "0tr4c3",
+      "createdAt": "2026-09-13T00:27:32.428Z"
+    },
+    {
+      "user": "marlithor_cyber",
+      "team": "0xSahara",
+      "slug": "0xsahara",
+      "createdAt": "2026-09-13T00:27:36.842Z"
+    },
+    {
+      "user": "oneflow",
+      "team": "pwn3dByKidS",
+      "slug": "pwn3dbykids",
+      "createdAt": "2026-09-13T00:40:05.585Z"
+    },
+    {
+      "user": "silentzer0",
+      "team": "ExploitX",
+      "slug": "exploitx",
+      "createdAt": "2026-09-13T01:03:33.193Z"
+    },
+    {
+      "user": "ftps3rver",
+      "team": "RUY",
+      "slug": "ruy",
+      "createdAt": "2026-09-13T01:22:19.453Z"
+    },
+    {
+      "user": "mrglwglwgl",
+      "team": "SDS",
+      "slug": "sds",
+      "createdAt": "2026-09-13T01:23:23.319Z"
+    },
+    {
+      "user": "DoUknowKimcHi",
+      "team": "DoUknowKimcHi",
+      "slug": "douknowkimchi",
+      "createdAt": "2026-09-13T02:03:17.974Z"
+    }
+  ],
+  "isDeployable": false,
+  "isSolved": false,
+  "deployment": null,
+  "nextChallenge": {
+    "slug": "ghost-flight---3---storage-location",
+    "name": "Ghost Flight - 3 - Storage Location",
+    "difficulty": "Easy"
+  },
+  "averageTimeToDeployInSeconds": null,
+  "areSolvesVisible": true,
+  "incorrectSubmissionsCount": 0,
+  "firstBloodBonus": 0
+}

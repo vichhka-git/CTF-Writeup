@@ -1,0 +1,195 @@
+{
+  "slug": "spiny-trace",
+  "name": "Spiny Trace",
+  "nature": "BlueTeam",
+  "type": "Classic",
+  "description": "The Intrusion Detection System flagged an unusual outbound connection from\na workstation belonging to one of the company's employees. Nothing else was\nlogged, no alert fired on the endpoint, and the user insists they \"just\nsolved a captcha\".\n<br><br>\nYou have been handed the forensic artifacts pulled from that machine.\nReconstruct the intrusion end to end: how the user was tricked into running\nthe first command, what was staged next, which processes the payload hid\ninside, what it stole, and where it sent the data.\n<br><br>\n<b>Evidence:</b> the artifacts are provided as a download with this challenge.\n<br>\n<b>Archive password:</b> <code>infected</code>\n<br><br>\n<i>Warning: the archive contains live malware. Detonate only inside an\nisolated analysis VM with networking disabled.</i>\n<br/><br/><b>- @0x4d & @m7mad</b>\n",
+  "publicFilesUrl": "https://master-platform-bucket.s3.us-east-1.amazonaws.com/challenge-groups/51804bff-1833-4aff-a40c-471e309cf973/public.zip",
+  "ctfAttachmentPassword": "infected",
+  "attachmentFileOwner": "y_rose",
+  "attachmentFileGroup": "Dark_Matter",
+  "isDeployable": false,
+  "deployment": null,
+  "tasks": [
+    {
+      "slug": "spiny-trace-1---initial-access",
+      "name": "Spiny Trace 1 - Initial Access",
+      "points": 1,
+      "difficulty": "Easy",
+      "solvesCount": 40,
+      "isSolved": false,
+      "locked": false
+    },
+    {
+      "slug": "locked-1",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-2",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-3",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-4",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-5",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-6",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-7",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-8",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-9",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-10",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-11",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-12",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-13",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-14",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-15",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-16",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-17",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-18",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-19",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "state": "Released",
+  "slug": "ghost-flight---6---claim-your-points",
+  "name": "Ghost Flight - 6 - Claim your points",
+  "description": "You've completed the whole investigation. Now claim your points. Take every\nanswer you submitted in this group, in order (question 1 through 5), and\nconcatenate them <b>directly with no separators, spaces, or newlines</b>,\neach answer written <b>exactly</b> as it was accepted (case-sensitive). The\nseal is the SHA-256 of that string.\n<br><br>\n<b>Flag:</b> <code>pwnsec{ sha256(answer1 + answer2 + ... + answer5) }</code>\n",
+  "points": 181,
+  "difficulty": "Easy",
+  "solvesCount": 43,
+  "category": "OSINT",
+  "publicFilesUrl": null,
+  "ctfAttachmentPassword": "infected",
+  "attachmentFileOwner": "y_rose",
+  "attachmentFileGroup": "Dark_Matter",
+  "isTeamsMode": true,
+  "solves": [
+    {
+      "user": "JohnDoers",
+      "team": "MindCrafters",
+      "slug": "mindcrafters",
+      "createdAt": "2026-09-12T18:51:04.842Z"
+    },
+    {
+      "user": "youngdu",
+      "team": "youngdu",
+      "slug": "youngdu",
+      "createdAt": "2026-09-12T18:53:55.003Z"
+    },
+    {
+      "user": "dyh18",
+      "team": "ZapBD",
+      "slug": "zapbd",
+      "createdAt": "2026-09-12T18:55:18.751Z"
+    },
+    {
+      "user": "Tara1",
+      "team": "Ducks-Can-Break-Anything",
+      "slug": "ducks-can-break-anything",
+      "createdAt": "2026-09-12T19:01:07.334Z"
+    },
+    {
+      "user": "Maybe_basel",
+      "team": "0x34",
+      "slug": "0x34",
+      "createdAt": "2026-09-12T19:07:48.419Z"
+    },
+    {
+      "user": "0xfun",
+      "team": "0xfun",
+      "slug": "0xfun",
+      "createdAt": "2026-09-12T19:11:36.860Z"
+    },
+    {
+      "user": "nameless",
+      "team": "nameless404",
+      "slug": "nameless404",
+      "createdAt": "2026-09-12T19:14:26.083Z"
+    },
+    {
+      "user": "zzzz",
+      "team": "zzzz",
+      "slug": "zzzz",
+      "createdAt": "2026-09-12T19:18:48.225Z"
+    },
+    {
+      "user": "zwadhams",
+      "team": "learn2ctf",
+      "slug": "learn2ctf",
+      "createdAt": "2026-09-12T19:23:40.931Z"
+    },
+    {
+      "user": "Luzaurus",
+      "team": "H5X",
+      "slug": "h5x",
+      "createdAt": "2026-09-12T19:26:08.526Z"
+    },
+    {
+      "user": "zEPHYR31337",
+      "team": "Skaunepatrullen",
+      "slug": "skaunepatrullen",
+      "createdAt": "2026-09-12T19:29:37.699Z"
+    },
+    {
+      "user": "kuro",
+      "team": "404squad",
+      "slug": "404squad",
+      "createdAt": "2026-09-12T19:31:52.421Z"
+    },
+    {
+      "user": "sh1nY",
+      "team": "Mollu",
+      "slug": "mollu",
+      "createdAt": "2026-09-12T19:34:30.918Z"
+    },
+    {
+      "user": "Moltrax",
+      "team": "AltayCTF",
+      "slug": "altayctf",
+      "createdAt": "2026-09-12T19:35:03.127Z"
+    },
+    {
+      "user": "JAGIC",
+      "team": "P3ak",
+      "slug": "p3ak",
+      "createdAt": "2026-09-12T19:46:24.093Z"
+    },
+    {
+      "user": "W4llz",
+      "team": "W4llz",
+      "slug": "w4llz",
+      "createdAt": "2026-09-12T20:04:10.129Z"
+    },
+    {
+      "user": "ipzen",
+      "team": "Dunderpatrullen",
+      "slug": "dunderpatrullen",
+      "createdAt": "2026-09-12T20:14:10.813Z"
+    },
+    {
+      "user": "0xL4ugh",
+      "team": "0xL4ugh",
+      "slug": "0xl4ugh",
+      "createdAt": "2026-09-12T20:26:03.510Z"
+    },
+    {
+      "user": "JordanSec",
+      "team": "JordanSec",
+      "slug": "jordansec",
+      "createdAt": "2026-09-12T20:46:11.247Z"
+    },
+    {
+      "user": "dcua",
+      "team": "dcua",
+      "slug": "dcua",
+      "createdAt": "2026-09-12T20:50:15.136Z"
+    },
+    {
+      "user": "hadiro0023",
+      "team": "Avengers",
+      "slug": "avengers",
+      "createdAt": "2026-09-12T20:52:38.644Z"
+    },
+    {
+      "user": "santhosh",
+      "team": "ElSindicatoBinario",
+      "slug": "elsindicatobinario",
+      "createdAt": "2026-09-12T20:54:56.419Z"
+    },
+    {
+      "user": "legendile7",
+      "team": "TheHackPackUGA",
+      "slug": "thehackpackuga",
+      "createdAt": "2026-09-12T21:05:43.198Z"
+    },
+    {
+      "user": "georgrybski",
+      "team": "rybskiworks",
+      "slug": "rybskiworks",
+      "createdAt": "2026-09-12T21:17:23.491Z"
+    },
+    {
+      "user": "sl0p1",
+      "team": "Neomware",
+      "slug": "neomware",
+      "createdAt": "2026-09-12T21:26:16.191Z"
+    },
+    {
+      "user": "PolyNov08",
+      "team": "Team_Pri5m",
+      "slug": "team_pri5m",
+      "createdAt": "2026-09-12T22:09:31.572Z"
+    },
+    {
+      "user": "P4wN",
+      "team": "HackingCATminatorS",
+      "slug": "hackingcatminators",
+      "createdAt": "2026-09-12T22:23:07.094Z"
+    },
+    {
+      "user": "T4MER",
+      "team": "T4MER",
+      "slug": "t4mer",
+      "createdAt": "2026-09-12T22:44:45.566Z"
+    },
+    {
+      "user": "VeniVidiVivci",
+      "team": "BITSkrieg",
+      "slug": "bitskrieg",
+      "createdAt": "2026-09-12T22:52:31.745Z"
+    },
+    {
+      "user": "JordanSec_Girls",
+      "team": "JordanSec_Girls",
+      "slug": "jordansec_girls",
+      "createdAt": "2026-09-12T23:06:06.128Z"
+    },
+    {
+      "user": "vwv",
+      "team": "tttest",
+      "slug": "tttest",
+      "createdAt": "2026-09-12T23:22:28.517Z"
+    },
+    {
+      "user": "hambugi",
+      "team": "CheongA",
+      "slug": "cheonga",
+      "createdAt": "2026-09-12T23:47:31.449Z"
+    },
+    {
+      "user": "Luki1235512",
+      "team": "Pup4s",
+      "slug": "pup4s",
+      "createdAt": "2026-09-13T00:04:29.632Z"
+    },
+    {
+      "user": "Kzl3",
+      "team": "NOT_TODAY",
+      "slug": "not_today",
+      "createdAt": "2026-09-13T00:19:07.706Z"
+    },
+    {
+      "user": "tim-timman",
+      "team": "Shellskapsresan",
+      "slug": "shellskapsresan",
+      "createdAt": "2026-09-13T00:25:09.501Z"
+    },
+    {
+      "user": "funs1ze_",
+      "team": "perimeter",
+      "slug": "perimeter",
+      "createdAt": "2026-09-13T00:32:31.256Z"
+    },
+    {
+      "user": "marlithor_cyber",
+      "team": "0xSahara",
+      "slug": "0xsahara",
+      "createdAt": "2026-09-13T00:46:31.227Z"
+    },
+    {
+      "user": "zap1337",
+      "team": "v1olet",
+      "slug": "v1olet",
+      "createdAt": "2026-09-13T00:50:19.808Z"
+    },
+    {
+      "user": "silentzer0",
+      "team": "ExploitX",
+      "slug": "exploitx",
+      "createdAt": "2026-09-13T01:05:45.882Z"
+    },
+    {
+      "user": "EL_R4Y",
+      "team": "0TR4C3",
+      "slug": "0tr4c3",
+      "createdAt": "2026-09-13T01:23:47.616Z"
+    },
+    {
+      "user": "mrglwglwgl",
+      "team": "SDS",
+      "slug": "sds",
+      "createdAt": "2026-09-13T01:33:52.245Z"
+    },
+    {
+      "user": "jitimod130",
+      "team": "OxV01D",
+      "slug": "oxv01d",
+      "createdAt": "2026-09-13T01:44:29.333Z"
+    },
+    {
+      "user": "ftps3rver",
+      "team": "RUY",
+      "slug": "ruy",
+      "createdAt": "2026-09-13T01:54:04.712Z"
+    }
+  ],
+  "isDeployable": false,
+  "isSolved": false,
+  "deployment": null,
+  "nextChallenge": {
+    "slug": "spiny-trace-1---initial-access",
+    "name": "Spiny Trace 1 - Initial Access",
+    "difficulty": "Easy"
+  },
+  "averageTimeToDeployInSeconds": null,
+  "areSolvesVisible": true,
+  "incorrectSubmissionsCount": 0,
+  "firstBloodBonus": 0
+}

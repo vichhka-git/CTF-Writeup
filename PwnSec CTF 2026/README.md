@@ -1,12 +1,22 @@
 # PwnSec CTF 2026 - Writeups
 
 * **Event:** PwnSec CTF 2026
-* **Total Solves:** 14 challenges solved
-* **Total Points:** 1,789 pts
+* **Total Solves:** 17 challenges (14 Standard Challenges + 3 Multi-stage Challenge Groups)
+* **Total Points:** 2,423 pts
 
 ---
 
-## Solved Challenges Summary
+## Solved Challenge Groups (BlueTeam / DFIR / OSINT)
+
+| Challenge Group | Nature | Tasks | Points | Solved | Final Seal Flag | Files & Artifacts | Solver | Writeup |
+| :--- | :--- | :---: | :---: | :---: | :--- | :--- | :--- | :--- |
+| [Ghost Flight](./challenge_groups/ghost_flight) | OSINT / Aviation Forensics | 6 / 6 | 179 | ✅ | `pwnsec{29c58d587d4e5e0a8380753406daf02c3b4346b7f02d8899ad22888ca74b8b9c}` | [`challenge_groups/ghost_flight`](./challenge_groups/ghost_flight) | [`solve.py`](./challenge_groups/ghost_flight/solve.py) | [`writeup.md`](./challenge_groups/ghost_flight/writeup.md) |
+| [Blindsided](./challenge_groups/blindsided) | BlueTeam / DFIR / IR | 18 / 18 | 210 | ✅ | `pwnsec{64045c11925ba1ef21444f0bc35ae29532552cf440faddfd6291d84d6465191c}` | [`challenge_groups/blindsided`](./challenge_groups/blindsided) | [`solve.py`](./challenge_groups/blindsided/solve.py) | [`writeup.md`](./challenge_groups/blindsided/writeup.md) |
+| [Spiny Trace](./challenge_groups/spiny_trace) | BlueTeam / DFIR / Malware | 20 / 20 | 245 | ✅ | `pwnsec{095cfa7f04b8a9b8c7f204e911ae738f2449beef677f961e7047164dd2bfd723}` | [`challenge_groups/spiny_trace`](./challenge_groups/spiny_trace) | [`solve.py`](./challenge_groups/spiny_trace/solve.py) | [`writeup.md`](./challenge_groups/spiny_trace/writeup.md) |
+
+---
+
+## Standard Challenges Summary
 
 | Category | Challenge | Points | Solved | Flag | Challenge Files | Solver | Writeup |
 | :--- | :--- | :---: | :---: | :--- | :--- | :--- | :--- |

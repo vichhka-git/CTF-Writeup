@@ -1,0 +1,265 @@
+{
+  "state": "Released",
+  "slug": "spiny-trace-1---initial-access",
+  "name": "Spiny Trace 1 - Initial Access",
+  "description": "Every intrusion has a first move. In this one the attacker never exploited a\nservice and never sent an attachment &mdash; the user ran the code themselves,\nbelieving they were completing a routine verification step.\n<br><br>\nIdentify the MITRE ATT&amp;CK sub-technique the attacker used to gain initial\naccess.\n<br><br>\n<b>Answer format:</b> <code>T1234.004</code>\n",
+  "points": 1,
+  "difficulty": "Easy",
+  "solvesCount": 40,
+  "category": "Forensics",
+  "publicFilesUrl": null,
+  "ctfAttachmentPassword": "infected",
+  "attachmentFileOwner": "y_rose",
+  "attachmentFileGroup": "Dark_Matter",
+  "isTeamsMode": true,
+  "solves": [
+    {
+      "user": "Aur0r4",
+      "team": "BITSkrieg",
+      "slug": "bitskrieg",
+      "createdAt": "2026-09-12T19:41:06.991Z"
+    },
+    {
+      "user": "ANormalStick",
+      "team": "0xfun",
+      "slug": "0xfun",
+      "createdAt": "2026-09-12T19:42:07.073Z"
+    },
+    {
+      "user": "0xL4ugh",
+      "team": "0xL4ugh",
+      "slug": "0xl4ugh",
+      "createdAt": "2026-09-12T19:42:29.685Z"
+    },
+    {
+      "user": "W4llz",
+      "team": "W4llz",
+      "slug": "w4llz",
+      "createdAt": "2026-09-12T19:42:33.596Z"
+    },
+    {
+      "user": "zEPHYR31337",
+      "team": "Skaunepatrullen",
+      "slug": "skaunepatrullen",
+      "createdAt": "2026-09-12T19:43:47.136Z"
+    },
+    {
+      "user": "R3d_Alzyoud",
+      "team": "Mansaf",
+      "slug": "mansaf",
+      "createdAt": "2026-09-12T19:50:43.784Z"
+    },
+    {
+      "user": "dcua",
+      "team": "dcua",
+      "slug": "dcua",
+      "createdAt": "2026-09-12T19:51:01.795Z"
+    },
+    {
+      "user": "mhna",
+      "team": "zzzz",
+      "slug": "zzzz",
+      "createdAt": "2026-09-12T19:57:31.780Z"
+    },
+    {
+      "user": "Tara1",
+      "team": "Ducks-Can-Break-Anything",
+      "slug": "ducks-can-break-anything",
+      "createdAt": "2026-09-12T20:01:57.274Z"
+    },
+    {
+      "user": "SONY",
+      "team": "H5X",
+      "slug": "h5x",
+      "createdAt": "2026-09-12T20:07:26.566Z"
+    },
+    {
+      "user": "p1p3t",
+      "team": "AltayCTF",
+      "slug": "altayctf",
+      "createdAt": "2026-09-12T20:08:18.042Z"
+    },
+    {
+      "user": "JordanSec",
+      "team": "JordanSec",
+      "slug": "jordansec",
+      "createdAt": "2026-09-12T20:25:52.694Z"
+    },
+    {
+      "user": "sl0p1",
+      "team": "Neomware",
+      "slug": "neomware",
+      "createdAt": "2026-09-12T20:36:30.039Z"
+    },
+    {
+      "user": "abdon",
+      "team": "P3ak",
+      "slug": "p3ak",
+      "createdAt": "2026-09-12T20:46:45.482Z"
+    },
+    {
+      "user": "ByteRyder",
+      "team": "learn2ctf",
+      "slug": "learn2ctf",
+      "createdAt": "2026-09-12T20:48:39.149Z"
+    },
+    {
+      "user": "georgrybski",
+      "team": "rybskiworks",
+      "slug": "rybskiworks",
+      "createdAt": "2026-09-12T20:50:54.314Z"
+    },
+    {
+      "user": "chuzouX",
+      "team": "ZapBD",
+      "slug": "zapbd",
+      "createdAt": "2026-09-12T20:51:19.351Z"
+    },
+    {
+      "user": "Maybe_basel",
+      "team": "0x34",
+      "slug": "0x34",
+      "createdAt": "2026-09-12T20:52:02.163Z"
+    },
+    {
+      "user": "MiCayCapDo7",
+      "team": "MiCayCapDo7",
+      "slug": "micaycapdo7",
+      "createdAt": "2026-09-12T21:16:40.987Z"
+    },
+    {
+      "user": "santhosh",
+      "team": "ElSindicatoBinario",
+      "slug": "elsindicatobinario",
+      "createdAt": "2026-09-12T21:18:59.311Z"
+    },
+    {
+      "user": "rakan",
+      "team": "SOS",
+      "slug": "sos",
+      "createdAt": "2026-09-12T21:42:54.512Z"
+    },
+    {
+      "user": "Veineya",
+      "team": "ChebashkiCAU",
+      "slug": "chebashkicau",
+      "createdAt": "2026-09-12T21:54:14.013Z"
+    },
+    {
+      "user": "onvx",
+      "team": "NoShelter",
+      "slug": "noshelter",
+      "createdAt": "2026-09-12T22:10:00.451Z"
+    },
+    {
+      "user": "cosmoai",
+      "team": "Xylo",
+      "slug": "xylo",
+      "createdAt": "2026-09-12T22:31:09.298Z"
+    },
+    {
+      "user": "IamTufo",
+      "team": "TraChanhHV4",
+      "slug": "trachanhhv4",
+      "createdAt": "2026-09-12T22:32:19.783Z"
+    },
+    {
+      "user": "nameless",
+      "team": "nameless404",
+      "slug": "nameless404",
+      "createdAt": "2026-09-12T22:34:17.042Z"
+    },
+    {
+      "user": "PolyNov08",
+      "team": "Team_Pri5m",
+      "slug": "team_pri5m",
+      "createdAt": "2026-09-12T22:37:33.029Z"
+    },
+    {
+      "user": "moderncyborgssec_player",
+      "team": "ModernCyborgsSec",
+      "slug": "moderncyborgssec",
+      "createdAt": "2026-09-12T23:00:41.271Z"
+    },
+    {
+      "user": "HM1554",
+      "team": "0TR4C3",
+      "slug": "0tr4c3",
+      "createdAt": "2026-09-12T23:04:38.263Z"
+    },
+    {
+      "user": "p7inc3",
+      "team": "blackXmask",
+      "slug": "blackxmask",
+      "createdAt": "2026-09-12T23:16:33.803Z"
+    },
+    {
+      "user": "nugmubs",
+      "team": "nugmubs",
+      "slug": "nugmubs",
+      "createdAt": "2026-09-12T23:18:22.617Z"
+    },
+    {
+      "user": "mrglwglwgl",
+      "team": "SDS",
+      "slug": "sds",
+      "createdAt": "2026-09-12T23:31:48.800Z"
+    },
+    {
+      "user": "nadelsuchbaum",
+      "team": "GIGGehacktIstGeil",
+      "slug": "giggehacktistgeil",
+      "createdAt": "2026-09-12T23:47:37.156Z"
+    },
+    {
+      "user": "Kzl3",
+      "team": "NOT_TODAY",
+      "slug": "not_today",
+      "createdAt": "2026-09-13T00:22:38.579Z"
+    },
+    {
+      "user": "jwto",
+      "team": "claude",
+      "slug": "claude",
+      "createdAt": "2026-09-13T01:27:54.959Z"
+    },
+    {
+      "user": "marlithor_cyber",
+      "team": "0xSahara",
+      "slug": "0xsahara",
+      "createdAt": "2026-09-13T01:39:08.014Z"
+    },
+    {
+      "user": "hambugi",
+      "team": "CheongA",
+      "slug": "cheonga",
+      "createdAt": "2026-09-13T01:39:19.101Z"
+    },
+    {
+      "user": "bearpus",
+      "team": "404squad",
+      "slug": "404squad",
+      "createdAt": "2026-09-13T01:51:33.154Z"
+    },
+    {
+      "user": "Cheese",
+      "team": "cyberowls",
+      "slug": "cyberowls",
+      "createdAt": "2026-09-13T01:54:18.717Z"
+    },
+    {
+      "user": "4Leaf",
+      "team": "4Leaf",
+      "slug": "4leaf",
+      "createdAt": "2026-09-13T01:55:03.253Z"
+    }
+  ],
+  "isDeployable": false,
+  "isSolved": false,
+  "deployment": null,
+  "nextChallenge": null,
+  "averageTimeToDeployInSeconds": null,
+  "areSolvesVisible": true,
+  "incorrectSubmissionsCount": 0,
+  "firstBloodBonus": 0
+}

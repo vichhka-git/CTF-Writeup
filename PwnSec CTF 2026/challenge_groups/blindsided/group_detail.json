@@ -1,0 +1,177 @@
+{
+  "slug": "blindsided",
+  "name": "Blindsided",
+  "nature": "BlueTeam",
+  "type": "Classic",
+  "description": "An HR employee reported receiving an email from a job applicant named \n<b>Aurelio Nadeau</b> containing what looked like a CV and cover letter. The\nemployee says they simply opened the PDF attachment to review the application.\n<br/><br/>\nMinutes later the SOC flagged an unusual outbound connection from the\nworkstation. The employee insists:\n<br><br>\n<i>\"I just opened a PDF. I didn't run anything.\"</i>\n<br><br>\nForensic artifacts have been collected from the workstation. Trace the full\nattack chain &mdash; from initial access to exfiltration &mdash; and answer the\nquestions.\n<br><br>\n<b>Evidence:</b> the artifacts are provided as a download with this challenge.\n<br>\n<b>Archive password:</b> <code>infected</code>\n<br/><br/><b>- @Abdullah</b>\n",
+  "publicFilesUrl": "https://master-platform-bucket.s3.us-east-1.amazonaws.com/challenge-groups/67dd5002-5a89-43c0-9f8d-acf42cef6bff/public.zip",
+  "ctfAttachmentPassword": "infected",
+  "attachmentFileOwner": "y_rose",
+  "attachmentFileGroup": "Dark_Matter",
+  "isDeployable": false,
+  "deployment": null,
+  "tasks": [
+    {
+      "slug": "blindsided---1---the-subdomain",
+      "name": "Blindsided - 1 - The Subdomain",
+      "points": 1,
+      "difficulty": "Easy",
+      "solvesCount": 64,
+      "isSolved": false,
+      "locked": false
+    },
+    {
+      "slug": "locked-1",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-2",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-3",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-4",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-5",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-6",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-7",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-8",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-9",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-10",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-11",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-12",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-13",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-14",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-15",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-16",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    },
+    {
+      "slug": "locked-17",
+      "name": "???",
+      "points": 0,
+      "difficulty": null,
+      "solvesCount": 0,
+      "isSolved": false,
+      "locked": true
+    }
+  ]
+}
