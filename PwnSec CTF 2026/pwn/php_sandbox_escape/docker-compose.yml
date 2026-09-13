@@ -1,0 +1,7 @@
+services:
+  sandbox:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      FLAG: "pwnsec{local_test_flag}"

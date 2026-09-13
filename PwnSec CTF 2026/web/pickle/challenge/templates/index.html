@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Time Capsule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="wrap">
+  <p class="eyebrow">Cryo-Session Archive - node 07</p>
+  <h1>Time <span class="cold">Capsule</span></h1>
+  <p class="lede">Preserve and thaw a saved session. Paste the <code>base64</code> of your capsule. The vault sanitises dangerous payloads before restoring.</p>
+
+  <section class="slot">
+    <div class="slot__bar"><span id="dot" class="dot"></span><b>capsule slot</b> - awaiting insertion</div>
+    <div class="slot__body">
+      <label for="cap">capsule payload - base64(pickle)</label>
+      <textarea id="cap" spellcheck="false" placeholder="paste here"></textarea>
+      <div class="row">
+        <button id="go">Restore capsule</button>
+        <span class="hint">Enter a valid capsule to thaw it.</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="out"><div class="out__bar">vault output</div><pre id="out">- idle -</pre></div>
+  <div class="out"><div class="out__bar">disassembly</div><pre id="dis">- idle -</pre></div>
+</main>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

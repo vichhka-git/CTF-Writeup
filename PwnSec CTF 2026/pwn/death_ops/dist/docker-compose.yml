@@ -1,0 +1,20 @@
+services:
+  qemu-seccomp-chall:
+    build: .
+    image: qemu-seccomp-chall:latest
+    container_name: qemu-seccomp-chall
+    ports:
+      - "31337:31337"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    devices:
+      - /dev/kvm:/dev/kvm
+    pids_limit: 256
+    mem_limit: 512m
+    cpus: 1.0
+    restart: unless-stopped

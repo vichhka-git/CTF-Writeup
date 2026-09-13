@@ -1,0 +1,12 @@
+{
+  "name": "readonce-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "puppeteer": "^25.3.0"
+  }
+}

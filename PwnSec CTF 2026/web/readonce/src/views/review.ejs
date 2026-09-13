@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Review</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="review-body">
+  <iframe
+    id="viewer"
+    sandbox="allow-scripts"
+    src="/sandbox?rid=<%= encodeURIComponent(id) %>"></iframe>
+  <script nonce="<%= nonce %>">
+    const viewer = document.getElementById("viewer");
+    const report = <%- JSON.stringify({ id, state }) %>;
+    let closing = false;
+
+    addEventListener("message", (e) => {
+      if (!closing || e.source === viewer.contentWindow) return;
+
+      fetch("/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(report),
+      }).catch(() => {});
+    });
+
+    viewer.addEventListener("load", () => {
+      if (closing) return;
+      closing = true;
+      viewer.src = <%- JSON.stringify(`/sandbox?rid=${encodeURIComponent(id)}&end`) %>;
+    });
+  </script>
+</body>
+</html>

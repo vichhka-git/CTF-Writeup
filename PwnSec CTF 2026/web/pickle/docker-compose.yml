@@ -1,0 +1,18 @@
+services:
+  timecapsule:
+    build: ./challenge
+    image: timecapsule
+    container_name: timecapsule
+    ports:
+      - "9999:9999"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 1.0

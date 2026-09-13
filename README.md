@@ -6,13 +6,14 @@ Browse by event name for instant access to every challenge, solution, and flag!
 ## 🏆 Popular Events
 Click any folder below to jump straight to the writeups:
 
+- **[PwnSec CTF 2026](/vichhka-git/CTF-Writeup/tree/main/PwnSec%20CTF%202026)**  
+- **[BlackHat MEA CTF Qualification 2026](/vichhka-git/CTF-Writeup/tree/main/BlackHat%20MEA%20CTF%20Qualification%202026)**  
 - **[COMPFEST CTF](/vichhka-git/CTF-Writeup/tree/main/COMPFEST_CTF)**  
 - **[NahamCon CTF 2022](/vichhka-git/CTF-Writeup/tree/main/NahamCon%20CTF%202022)**  
 - **[Arab Security Cyber Wargames 2022](/vichhka-git/CTF-Writeup/tree/main/Arab%20Security%20Cyber%20Wargames%202022)**  
 - **[E0F CTF](/vichhka-git/CTF-Writeup/tree/main/E0F_CTF)**  
 - **[GrabCON CTF 2021](/vichhka-git/CTF-Writeup/tree/main/GrabCON%20CTF%202021)**  
 - **[Hacker101 CTF](/vichhka-git/CTF-Writeup/tree/main/Hacker101%20CTF)**
-- **[Blackhat MEA CTF Qualification 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/BlackHat%20MEA%20CTF%20Qualification%202026)**
 
 ## How to Use This Repo
 1. Click any event folder above (or search for the folder name).
