@@ -9,4 +9,5 @@
 **/.playwright-mcp/
 **/.ctf-bus/
 **/__pycache__/
+**/spur.log.recovered
 *.pyc

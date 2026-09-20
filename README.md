@@ -9,6 +9,7 @@ Click any folder below to jump straight to the writeups:
 - **[Singapore Cyber Conquest 2026](/vichhka-git/CTF-Writeup/tree/main/sg_cyber_conquest_2026)**
 - **[D-CTF 2026](/vichhka-git/CTF-Writeup/tree/main/d_ctf_2026)**
 - **[CSAW CTF 2026](/vichhka-git/CTF-Writeup/tree/main/csaw_ctf_2026)**
+- **[Holmes CTF 2026 – Hack The Box](/vichhka-git/CTF-Writeup/tree/main/holmes_ctf_2026)**
 - **[PwnSec CTF 2026](/vichhka-git/CTF-Writeup/tree/main/PwnSec%20CTF%202026)**  
 - **[BlackHat MEA CTF Qualification 2026](/vichhka-git/CTF-Writeup/tree/main/BlackHat%20MEA%20CTF%20Qualification%202026)**  
 - **[COMPFEST CTF](/vichhka-git/CTF-Writeup/tree/main/COMPFEST_CTF)**  
