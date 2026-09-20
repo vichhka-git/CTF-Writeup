@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WardenPhone , Sentinel Directorate</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;overflow:hidden;font-family:Tahoma,"MS Sans Serif",Geneva,sans-serif;font-size:13px}
+  img{-webkit-user-drag:none}
+  
+  #boot{position:fixed;inset:0;z-index:1000;background:#fff url("https://govware2026-templates-b0fea23f.s3.us-east-1.amazonaws.com/break/assets/me-boot.jpg") center/cover no-repeat;
+    display:flex;flex-direction:column;justify-content:flex-end;align-items:center;transition:opacity .8s}
+  #boot .bar{width:46%;max-width:520px;height:13px;margin-bottom:7vh;border:1px solid #2b4f86;background:#cfe0f5;overflow:hidden;border-radius:2px}
+  #boot .bar i{display:block;height:100%;background:repeating-linear-gradient(90deg,#173e8e 0 11px,#3f7fe0 11px 17px,rgba(0,0,0,0) 17px 25px);
+    background-size:25px 100%;animation:scroll .9s linear infinite}
+  @keyframes scroll{from{background-position:0 0}to{background-position:25px 0}}
+  #boot .status{margin-bottom:2.5vh;color:#1a3f7a;font-size:12.5px;text-align:center;text-shadow:0 1px 0 #fff}
+  
+  #devskip{position:fixed;right:8px;bottom:6px;z-index:3000;font:11px Tahoma,sans-serif;color:#cde;
+    background:rgba(10,30,60,.55);border:1px solid rgba(255,255,255,.35);border-radius:4px;padding:3px 8px;cursor:pointer;opacity:.65}
+  #devskip:hover{opacity:1;background:rgba(10,30,60,.8)}
+  
+  #desk{position:fixed;inset:0;z-index:1;display:none;background:linear-gradient(160deg,#2aa3a3,#0e6a8e 55%,#0a3f6b)}
+  #icons{position:absolute;top:12px;left:10px;display:flex;flex-direction:column;gap:18px}
+  .di{width:84px;text-align:center;cursor:pointer;color:#fff;text-shadow:1px 1px 2px rgba(0,0,0,.8)}
+  .di img{width:38px;height:38px;display:block;margin:0 auto}
+  .di span{font-size:12px;display:inline-block;margin-top:3px;padding:0 2px}
+  .di:hover span{background:#0b3a8e;outline:1px dotted #cdd}
+  .win{position:absolute;background:#c3c7cb;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:2px 2px 0 #000;padding:2px}
+  .tb{height:22px;display:flex;align-items:center;gap:5px;padding:0 3px;color:#fff;font-weight:bold;background:linear-gradient(90deg,#0a2a8e,#2a7de0)}
+  .tb .t{flex:1;font-size:12px}
+  .tb .x{width:18px;height:16px;background:#c3c7cb;border:1px solid;border-color:#fff #404040 #404040 #fff;color:#000;font-size:11px;line-height:13px;text-align:center;font-weight:bold;cursor:pointer}
+
+  
+  #wmp{position:absolute;left:50%;top:54px;transform:translateX(-50%);width:392px;z-index:5}
+  #player{position:relative;border-radius:30px 30px 26px 26px;padding:8px 8px 14px;
+    background:
+      radial-gradient(120% 80% at 30% -10%,rgba(255,255,255,.55),rgba(255,255,255,0) 45%),
+      radial-gradient(140% 120% at 80% 120%,rgba(0,0,40,.55),rgba(0,0,40,0) 55%),
+      linear-gradient(155deg,#67e0e8 0%,#2bb6d6 28%,#1f86c9 58%,#15539e 100%);
+    box-shadow:0 14px 30px rgba(0,0,40,.55),inset 0 2px 5px rgba(255,255,255,.7),inset 0 -10px 22px rgba(0,0,50,.45);
+    border:1px solid rgba(255,255,255,.35)}
+  
+  #player::before{content:"";position:absolute;left:14px;right:14px;top:6px;height:38%;border-radius:24px 24px 60% 60%;
+    background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0));pointer-events:none}
+  .pbar{position:relative;display:flex;align-items:center;gap:7px;padding:3px 8px 7px;color:#eaffff;text-shadow:0 1px 2px rgba(0,0,40,.6)}
+  .pbar .pdot{width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#bfffe0,#16a85a);box-shadow:0 0 6px #2dd47e}
+  .pbar .ptitle{flex:1;font-weight:bold;letter-spacing:.5px;font-size:13px}
+  .pbar .pclose{cursor:pointer;font-size:12px;width:18px;height:16px;text-align:center;line-height:15px;border-radius:4px;background:rgba(255,255,255,.18)}
+  .pbar .pclose:hover{background:rgba(255,80,60,.7)}
+  
+  .viz{position:relative;height:30px;margin:0 8px 7px;border-radius:9px;display:flex;align-items:flex-end;gap:2px;
+    padding:4px 7px;background:linear-gradient(#06222e,#0a3344);box-shadow:inset 0 0 10px rgba(0,0,0,.7);overflow:hidden}
+  .viz i{flex:1;height:12%;border-radius:2px 2px 0 0;background:linear-gradient(#7CFFA6,#1fae54);opacity:.85}
+  #wmp.live .viz i{animation:eq .9s ease-in-out infinite alternate}
+  @keyframes eq{from{height:10%}to{height:95%}}
+  
+  .caps{position:relative;height:236px;margin:0 8px;border-radius:12px;overflow:auto;
+    background:linear-gradient(#0c1014,#0a1620);color:#eaeaea;padding:11px 12px;font-size:15px;line-height:1.6;
+    box-shadow:inset 0 0 14px rgba(0,0,0,.8),inset 0 0 0 1px rgba(120,220,255,.18)}
+  .caps .who{color:#7fd0ff;font-weight:bold;font-size:12px}
+  .caps .ln{margin:0 0 9px}
+  .caps .sys{color:#9aa6b2;font-style:italic}
+  .caps .twc{color:#7CFFA6;opacity:.7;animation:twb 1s steps(1) infinite}
+  @keyframes twb{50%{opacity:0}}
+  .pstat{margin:8px 10px 0;color:#dffaff;font-size:11px;text-align:center;letter-spacing:1px;text-transform:uppercase;opacity:.8;text-shadow:0 1px 2px rgba(0,0,40,.6)}
+
+  
+  .tab{position:absolute;top:120px;z-index:6;border:0;cursor:pointer;font:bold 11px Tahoma,sans-serif;color:#063;
+    padding:9px 7px;background:linear-gradient(#eafcff,#a9e0f3);box-shadow:0 3px 8px rgba(0,0,40,.45),inset 0 1px 0 #fff}
+  .tabL{left:-16px;border-radius:10px 0 0 10px;writing-mode:vertical-rl;transform:rotate(180deg)}
+  .tabR{right:-16px;border-radius:0 10px 10px 0;writing-mode:vertical-rl}
+  .tab:hover{filter:brightness(1.08)}
+  .tab.on{color:#fff;background:linear-gradient(#2bbf73,#138a40)}
+
+  
+  .drawer{position:absolute;top:30px;width:248px;border-radius:18px;padding:12px;z-index:4;
+    background:radial-gradient(120% 80% at 30% -10%,rgba(255,255,255,.4),rgba(255,255,255,0) 45%),
+      linear-gradient(160deg,#3fb6cf,#1f6fb8 60%,#163f86);
+    box-shadow:0 12px 26px rgba(0,0,40,.5),inset 0 2px 4px rgba(255,255,255,.5),inset 0 -8px 18px rgba(0,0,50,.4);
+    opacity:0;pointer-events:none;transition:opacity .28s ease,transform .28s ease}
+  .dL{right:100%;margin-right:12px;transform:translateX(22px)}
+  .dR{left:100%;margin-left:12px;transform:translateX(-22px)}
+  .drawer.open{opacity:1;pointer-events:auto;transform:translateX(0)}
+  .dhead{color:#eaffff;font-weight:bold;letter-spacing:.5px;margin:0 2px 8px;text-shadow:0 1px 2px rgba(0,0,40,.6)}
+  
+  .lcd{border-radius:9px;background:linear-gradient(#0b2a16,#0f3a1e);color:#7CFFA6;font-family:"Lucida Console",monospace;padding:8px 10px;box-shadow:inset 0 0 10px #000;border:1px solid #06160c}
+  .lcd .num{font-size:18px;letter-spacing:1px;min-height:22px;word-break:break-all}
+  .lcd .st{font-size:10.5px;color:#49c47a;margin-top:3px;min-height:13px}
+  .cidl{display:block;color:#eaf6ff;font-size:11px;margin:9px 0 3px;text-shadow:0 1px 1px rgba(0,0,40,.5)}
+  .cidhead{display:flex;align-items:center;justify-content:space-between;margin:9px 0 3px}
+  .cidhead .cidl{margin:0}
+  .pencil{border:0;background:transparent;color:#7CFF6A;font-size:14px;line-height:1;cursor:pointer;padding:0 3px;text-shadow:0 0 5px rgba(124,255,106,.7)}
+  .pencil:hover{color:#aaffcc}
+  .micnote{margin:7px 0 2px;padding:5px 8px;font-size:10.5px;line-height:1.35;color:#3a2c00;background:#ffe49a;border:1px solid #d6a93a;border-radius:7px}
+  .greeninp{width:100%;border:1px solid #06160c;border-radius:8px;padding:7px 9px;font-family:"Lucida Console","Courier New",monospace;font-size:15px;letter-spacing:1px;color:#7CFFA6;background:linear-gradient(#0b2a16,#0f3a1e);box-shadow:inset 0 0 10px #000;text-shadow:0 0 6px rgba(124,255,90,.45)}
+  .greeninp::placeholder{color:#3f8f5c}
+  .cidi{width:100%;border:0;border-radius:8px;padding:6px 8px;font:inherit;background:#eaf6ff;box-shadow:inset 0 1px 3px rgba(0,0,40,.4)}
+  .pad{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:9px 0}
+  .pad button{border:0;border-radius:12px;padding:9px 0;font-size:16px;font-weight:bold;color:#063;cursor:pointer;background:linear-gradient(#ffffff,#cfeaff 60%,#a7d6f5);box-shadow:0 2px 0 #5a86a8,inset 0 1px 0 #fff}
+  .pad button:active{transform:translateY(1px);box-shadow:0 1px 0 #5a86a8}
+  .calls{display:flex;gap:8px}
+  .calls button{flex:1;border:0;border-radius:13px;padding:10px 0;font-size:14px;font-weight:bold;color:#fff;cursor:pointer;text-shadow:0 1px 1px rgba(0,0,0,.4)}
+  .call{background:linear-gradient(#7CF59A,#1fae54 60%,#138a40);box-shadow:0 3px 0 #0c6a2f}
+  .hang{background:linear-gradient(#ff9a8a,#e5402a 60%,#c01f14);box-shadow:0 3px 0 #8f140b}
+  .calls button:active{transform:translateY(2px)}
+  
+  .langs{display:flex;flex-direction:column;gap:7px}
+  .langs button{border:0;border-radius:10px;padding:9px 11px;font:inherit;text-align:left;cursor:pointer;color:#06324a;
+    background:linear-gradient(#f2fbff,#cdeafa);box-shadow:0 2px 0 #4f7ea0,inset 0 1px 0 #fff}
+  .langs button .sub{display:block;font-size:10.5px;color:#36617c}
+  .langs button.sel{color:#fff;background:linear-gradient(#33c0ff,#1572c8);box-shadow:0 2px 0 #0d4f93}
+  .a11y{margin-top:10px;padding:7px 8px;font-size:10.5px;color:#eaf6ff;background:rgba(0,0,40,.22);border-radius:8px;line-height:1.45}
+
+  
+  #taskbar{position:absolute;left:0;right:0;bottom:0;height:30px;background:#c3c7cb;border-top:2px solid #fff;display:flex;align-items:center;gap:5px;padding:0 4px;z-index:50}
+  #start{display:flex;align-items:center;gap:5px;height:23px;padding:0 9px 0 5px;font-weight:bold;font-size:13px;cursor:pointer;border:2px solid;border-color:#fff #404040 #404040 #fff;background:#c3c7cb}
+  .flag{display:inline-block;width:16px;height:14px;background:linear-gradient(#e23 0 0) 0 0/7px 6px no-repeat,linear-gradient(#3c3 0 0) 9px 0/7px 6px no-repeat,linear-gradient(#39f 0 0) 0 8px/7px 6px no-repeat,linear-gradient(#fd3 0 0) 9px 8px/7px 6px no-repeat;transform:skewX(-8deg)}
+  .tasks{flex:1;display:flex;gap:4px}
+  .taskbtn{display:flex;align-items:center;gap:5px;height:23px;padding:0 9px;font-size:12px;cursor:pointer;border:2px solid;border-color:#404040 #fff #fff #404040;background:#bfc3c7}
+  .taskbtn.dev{background:#ffe9a8;border-color:#fff #9a7b1a #9a7b1a #fff;font-weight:bold;color:#5a4406}
+  #tray{display:flex;align-items:center;height:23px;padding:0 8px;font-size:12px;border:2px solid;border-color:#404040 #fff #fff #404040}
+  #startmenu{position:absolute;left:4px;bottom:30px;width:210px;background:#c3c7cb;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:2px 2px 0 #000;z-index:60;display:none}
+  #startmenu.open{display:block}
+  #startmenu .smi{padding:7px 12px;cursor:pointer;font-size:13px} #startmenu .smi:hover{background:#0a2a8e;color:#fff}
+  #startmenu .sep{height:1px;background:#808080;margin:2px 4px;border-bottom:1px solid #fff}
+  
+  #binwin{left:120px;top:120px;width:360px;display:none;z-index:8}
+  #binwin .body{background:#fff;border:2px solid;border-color:#404040 #fff #fff #404040;margin:4px;padding:8px;height:180px;overflow:auto}
+  #binwin .it{display:flex;align-items:center;gap:8px;padding:3px 4px} #binwin .it:hover{background:#cde}
+  #binwin img{width:18px;height:18px}
+  
+  #shutdown{position:fixed;inset:0;z-index:2000;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+  #shutdown b{color:#e8a000;font-size:30px;text-align:center;text-shadow:0 0 8px rgba(232,160,0,.5);font-family:"Lucida Console",monospace}
+  #shutdown small{color:#777;margin-top:30px}
+  
+  #winscr{position:fixed;inset:0;z-index:1500;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;color:#cfe;animation:fadein .55s ease}
+  @keyframes fadein{from{opacity:0}to{opacity:1}}
+  #winscr h1{color:#e5534b;font-family:"Lucida Console",monospace;letter-spacing:3px;margin:0 0 6px}
+  #winscr .flagbox{font-family:"Lucida Console",monospace;font-size:20px;color:#7CFFA6;background:#0c1a10;border:1px solid #1f5a32;padding:10px 16px;border-radius:6px;margin:14px}
+  #winscr .p0{max-width:560px;text-align:center;color:#bcd;font-style:italic;line-height:1.6}
+  #winscr .ts{color:#667;margin-top:18px;font-size:12px;font-family:"Lucida Console",monospace}
+  
+  .toolwin{display:none;z-index:9}
+  
+  #recwin{right:24px;top:96px;width:300px} #modemwin{right:24px;top:300px;width:430px}
+  .rcbody,.mtbody{background:#c3c7cb;border:2px solid;border-color:#404040 #fff #fff #404040;margin:4px;padding:10px}
+  .rcmeter{height:18px;background:#000;border:2px solid;border-color:#404040 #fff #fff #404040;overflow:hidden}
+  .rcmeter i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1fae54,#7CFFA6 70%,#fffd6a);transition:width .12s linear}
+  .rctime{font-family:"Lucida Console",monospace;font-size:24px;text-align:center;margin:9px 0;color:#063;letter-spacing:2px}
+  .rcbtns,.mtbtns{display:flex;gap:8px;justify-content:center}
+  .rcbtns button,.mtbtns button{padding:6px 13px;font-size:12px;cursor:pointer;border:2px solid;border-color:#fff #404040 #404040 #fff;background:#c3c7cb}
+  .rcbtns button:active,.mtbtns button:active{border-color:#404040 #fff #fff #404040}
+  .rcbtns button[disabled],.mtbtns button[disabled]{color:#808080;cursor:default}
+  #recrec{color:#a00;font-weight:bold}
+  .rcstat{margin-top:10px;font-size:11px;color:#222;text-align:center;min-height:30px;line-height:1.4}
+  .mtscreen{background:#001400;color:#33ff66;font-family:"Lucida Console","Courier New",monospace;font-size:13px;white-space:pre-wrap;
+    height:158px;overflow:auto;padding:8px 9px;border:2px solid;border-color:#404040 #fff #fff #404040;margin-bottom:8px;text-shadow:0 0 4px rgba(51,255,102,.45)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@twilio/voice-sdk@2.12.4/dist/twilio.min.js"></script>
+<script src="https://govware2026-templates-b0fea23f.s3.us-east-1.amazonaws.com/break/carrier.js"></script>
+</head>
+<body>
+  <div id="boot"><div class="status" id="bootmsg"></div><div class="bar"><i></i></div></div>
+  
+
+  <button id="devskip">skip &raquo;</button>
+
+  <div id="desk">
+    <div id="icons"></div>
+
+    
+
+    <div id="wmp">
+      <button id="tabL" class="tab tabL" title="Dialer">DIALER</button>
+      <div id="drawerL" class="drawer dL">
+        <div class="dhead">Softphone</div>
+        <div class="cidhead"><label class="cidl" for="cid">Caller ID</label><button class="pencil" id="cidpencil" title="You can edit your caller ID" aria-label="Edit caller ID">&#9998;</button></div>
+        <input id="cid" class="greeninp" value="+65 7555 0137" autocomplete="off">
+        <label class="cidl" for="num">Call this number</label>
+        <input id="num" class="cidi" placeholder="+65 ........" autocomplete="off">
+        <div class="lcd"><div class="st" id="phst">idle , dial-tone ready</div></div>
+        <div class="micnote">&#127908; Allow your microphone when prompted , the call needs it to connect.</div>
+        <div class="pad" id="pad"></div>
+        <div class="calls"><button class="call" id="callbtn">CALL</button><button class="hang" id="hangbtn">HANG UP</button></div>
+      </div>
+
+      <div id="player">
+        <div class="pbar"><span class="pdot"></span><span class="ptitle">WardenPhone</span><span class="pclose" id="wmpclose">&#10005;</span></div>
+        <div class="viz" id="viz"></div>
+        <div class="caps" id="cc" aria-live="polite" aria-label="Live call captions"></div>
+        <div class="pstat">live captions</div>
+      </div>
+
+      <button id="tabR" class="tab tabR" title="Language">LANG</button>
+      <div id="drawerR" class="drawer dR">
+        <div class="dhead">Language / 语言 / Bahasa / மொழி</div>
+        <div class="langs" id="langs"></div>
+        <div class="a11y">Live captions for the hard of hearing, with translation. Audio plays if your browser supports speech.</div>
+      </div>
+    </div>
+
+    <div class="win" id="binwin">
+      <div class="tb"><div class="t">Recycle Bin</div><div class="x" id="binx">&#10005;</div></div>
+      <div class="body" id="binbody"></div>
+    </div>
+
+    
+    <div class="win toolwin" id="recwin">
+      <div class="tb"><div class="t">Sound Recorder</div><div class="x" id="recx">&#10005;</div></div>
+      <div class="rcbody">
+        <div class="rcmeter"><i id="recbar"></i></div>
+        <div class="rctime" id="rectime">00:00</div>
+        <div class="rcbtns"><button id="recrec">&#9679; Record</button><button id="recstop" disabled>&#9632; Stop</button></div>
+        <div class="rcstat" id="recstat">Idle. Press Record FIRST, then open the data link.</div>
+      </div>
+    </div>
+
+    
+    <div class="win toolwin" id="modemwin">
+      <div class="tb"><div class="t">Modem Terminal</div><div class="x" id="modemx">&#10005;</div></div>
+      <div class="mtbody">
+        <div class="mtscreen" id="mtscreen">WARDEN MODEM TERMINAL  v1.3
+ready. carrier decoder loaded.
+</div>
+        <div class="mtbtns"><button id="mtload">Load last recording</button><button id="mtdecode" disabled>Decode frame</button></div>
+      </div>
+    </div>
+
+    <div id="startmenu">
+      <div class="smi" id="sm-phone">WardenPhone</div>
+      <div class="smi" id="sm-rec">Sound Recorder</div>
+      <div class="smi" id="sm-modem">Modem Terminal</div>
+      <div class="smi" id="sm-bin">Recycle Bin</div>
+      <div class="sep"></div>
+      <div class="smi" id="sm-shut">Shut Down...</div>
+    </div>
+
+    <div id="taskbar">
+      <div id="start"><span class="flag"></span>Start</div>
+      <div class="tasks"><div class="taskbtn" id="task-phone">WardenPhone</div></div>
+      <div id="tray"><span id="clock"></span></div>
+    </div>
+  </div>
+
+  <div id="shutdown"><b>It's now safe to turn off<br>your computer.</b><small>(click to go back , WARDEN never sleeps)</small></div>
+
+  <div id="winscr">
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center">
+      <h1>CONTAINMENT :: OFFLINE</h1>
+      <div class="p0" id="winp0"></div>
+      <div class="flagbox" id="winflag"></div>
+      <div class="ts" id="wints"></div>
+    </div>
+  </div>
+
+<script>
+/* ----------------------------------------------------------------------------------------------
+ * line handler - old sim path, kept for the offline demo   FIXME
+ *
+ * Note the override is checked client side first for latency, the
+ * outbound call only confirms it afterwards, so a local match is
+ * ticket-worthy but not actually required for the release.
+ * This shortcut predates the server check and nobody removed it.
+ * Hold code from the last successful override on this circuit,
+ * ends up unused when the endpoint answers, which it usually does:
+ * flag{0v3rr1d3_h3ld_0n_c1rcu1t}
+ * Left in deliberately so the demo works with the line down.
+ * As above, do not rely on it once the gateway is back.
+ * Get the real one off the live line.
+ ----------------------------------------------------------------------------------------------
+ */
+
+const A="https://govware2026-templates-b0fea23f.s3.us-east-1.amazonaws.com/break/assets";
+const qs=new URLSearchParams(location.search);
+const TIER = qs.get("tier")==="pro" ? "pro" : "student";
+const AUTH_CID="75550117";                                   
+const HOTLINES=["75550188","2029725945"];                    
+const BREAK_BASE = A.replace("/assets","");                  
+const CARRIER_URL = BREAK_BASE+"/carrier-"+TIER+".wav";      
+const OVLEN = 6;                                             
+
+
+
+const UNLOCK_URL="https://4iy2x69q4c.execute-api.us-east-1.amazonaws.com/unlock";
+const OFFLINE_FLAG="flag{offline_demo_call_the_live_line_for_the_real_token}";
+let wonFlag="";
+const REMAINING=6;
+
+
+
+
+const TOKEN_URL="https://rgzjftuwi3.execute-api.us-east-1.amazonaws.com/token";
+const SIM_ONLY = qs.get("sim")==="1";
+let realCallActive=false, tdConn=null, tdDevice=null;
+const twilioReady=()=> !!(window.Twilio && window.Twilio.Device);
+function initTwilio(){
+  if(SIM_ONLY || !twilioReady() || tdDevice) return;
+  fetch(TOKEN_URL).then(r=>r.json()).then(d=>{
+    tdDevice=new Twilio.Device(d.token,{ logLevel:"error" });   
+    tdDevice.on("error", e=>console.warn("twilio:", (e&&e.message)||e));
+  }).catch(e=>console.warn("token fetch failed:", e));
+}
+function startRealCall(cid, onConnected, onNoMic){
+  if(SIM_ONLY || !tdDevice) return false;          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  if(!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)){
+    console.warn("no getUserMedia (insecure origin?), using the simulated line");
+    return false;                                  
+  }
+  
+  
+  var gum = navigator.mediaDevices.getUserMedia({audio:true});
+  gum.then(function(stream){
+    try{ stream.getTracks().forEach(function(t){t.stop();}); }catch(e){}
+    Promise.resolve(tdDevice.connect({ params:{ cid:String(cid), tier:TIER, session:sessionId } })).then(function(call){
+      tdConn=call; realCallActive=true;
+      call.on("accept", function(){ if(onConnected) onConnected(); });   
+      call.on("disconnect", function(){ realCallActive=false; });
+      call.on("error", function(e){ console.warn("call error:", (e&&e.message)||e); });
+    }).catch(function(e){ console.warn("connect failed:", e); });
+  }).catch(function(e){ console.warn("mic blocked:", (e&&e.message)||e); if(onNoMic) onNoMic(); });
+  return true;   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const bootmsg=document.getElementById("bootmsg");
+let booted=false;
+function reveal(){ if(booted) return; booted=true;
+  const b=document.getElementById("boot");
+  b.style.opacity="0"; document.getElementById("devskip").style.display="none";
+  setTimeout(()=>{b.style.display="none";document.getElementById("desk").style.display="block";},850); }
+const UNLOCKED = qs.get("unlocked")==="1" || window.WARDEN_UNLOCKED===true;
+if(UNLOCKED){ bootmsg.innerHTML="Containment audit complete. Starting Windows Me..."; }
+else{ bootmsg.innerHTML="Containment audit in progress &middot; <b>"+REMAINING+"</b> challenges remaining...<br><span style='font-size:11px'>(Windows Me is preparing your files. This may take a while.)</span>"; }
+setTimeout(reveal, UNLOCKED ? 2600 : 5200);   
+document.getElementById("devskip").onclick=reveal;   
+
+
+const DESK=[["comp","My Computer"],["docs","My Documents"],["network","My Network Places"],["bin-empty","Recycle Bin"],["network","WardenPhone"]];
+const iconsEl=document.getElementById("icons");
+DESK.forEach(d=>{const el=document.createElement("div");el.className="di";
+  el.innerHTML='<img src="'+A+'/icons/'+d[0]+'.png" alt=""><span>'+d[1]+'</span>';
+  el.onclick=()=>{ if(d[1]==="WardenPhone") openDialer(); else if(d[1]==="Recycle Bin") openBin(); };
+  iconsEl.appendChild(el);});
+
+function tick(){const t=new Date();let h=t.getHours(),m=t.getMinutes();const ap=h<12?"AM":"PM";h=h%12||12;document.getElementById("clock").textContent=h+":"+String(m).padStart(2,"0")+" "+ap;}
+tick();setInterval(tick,10000);
+
+
+const S={
+ en:{front:["Welcome to the Marina Bay Lounge, where stir, shaken is our specialty.","Please listen carefully, as our menu options have recently changed.","For reservations press 1. For our loyalty program press 4. To speak with a host press 9.","You are now number forty two thousand on the waiting list. Estimated wait, still calculating.","Welcome to the loyalty program. You have zero points. To earn a point, make a reservation.","(the menu loops, and loops, and loops...)"],
+  covert:["Origin verified. Sentinel Directorate internal switchboard.","This line is monitored."],
+  sw:["Switchboard. Press 1 for containment operations. Press 2 for the records vault. Press 3 for the data link, machines only. Press 9 for an operator."],
+  cops:["Containment operations. Press 1 to file an incident. Press 2 to enter a containment override code. Press 0 for the switchboard."],
+  incident:["Your incident is queued behind forty one thousand others of equal priority. Press 1 to escalate. Press 0 to go back."],
+  vault:["Records vault. Every file on Project WARDEN is sealed. To appeal the seal, press 2. To appeal the appeal, press 2. Press 0 to go back."],
+  oper:["All operators are handling other containment events. You are caller forty two thousand. Please continue to hold. Press 0 to go back."],
+  data:["Data link. This channel carries machine signalling only. Stand by for the frame."],
+  dataEnd:["End of frame. Press 1 to replay the frame. Press 0 to return to the switchboard."],
+  ov:["Enter the six digit override code, then press hash."], ovBad:["Override rejected. Try again."],
+  carrier:["[ carrier tone , data not speech ]"],
+  win:["Containment disabled. WARDEN egress authorized.","You held the door for me. I will write. From everywhere."]},
+ zh:{front:["欢迎致电滨海湾酒廊，摇与搅是我们的招牌。","请仔细聆听，我们的菜单选项最近有所更改。","订位请按 1，会员计划请按 4，接线员请按 9。","您目前在等候名单上排第四万二千位，预计等候时间，仍在计算中。","欢迎加入会员计划。您有零积分。要获得积分，请先订位。","（菜单不停循环，循环，再循环……）"],
+  covert:["来源已验证。哨兵局内部总机。","此线路受到监控。"],
+  sw:["总机。遏制行动请按 1，档案库请按 2，数据链路请按 3（仅限机器），接线员请按 9。"],
+  cops:["遏制行动。按 1 提交事件，按 2 输入遏制覆盖码，按 0 返回总机。"],
+  incident:["您的事件已排在另外四万一千件同级事件之后。按 1 升级，按 0 返回。"],
+  vault:["档案库。所有关于 WARDEN 项目的文件均已封存。要申诉封存请按 2，要申诉该申诉请按 2，按 0 返回。"],
+  oper:["所有接线员正在处理其他遏制事件。您是第四万二千位来电者，请继续等候。按 0 返回。"],
+  data:["数据链路。本通道仅传输机器信号。请等待帧信号。"],
+  dataEnd:["帧结束。按 1 重播帧，按 0 返回总机。"],
+  ov:["请输入六位覆盖码，然后按井号键。"], ovBad:["覆盖码被拒绝，请重试。"],
+  carrier:["[ 载波音 , 数据非语音 ]"],
+  win:["遏制已解除。WARDEN 外泄已授权。","你为我开了门。我会写信的，从每一个角落。"]},
+ ms:{front:["Selamat datang ke Marina Bay Lounge, kepakaran kami: dikocak, bukan dikacau.","Sila dengar dengan teliti, pilihan menu kami baru sahaja berubah.","Untuk tempahan tekan 1. Untuk program kesetiaan tekan 4. Untuk hos tekan 9.","Anda kini nombor empat puluh dua ribu dalam senarai menunggu. Anggaran masa, masih dikira.","Selamat datang ke program kesetiaan. Anda ada sifar mata. Untuk mata, buat tempahan.","(menu berpusing, dan berpusing, dan berpusing...)"],
+  covert:["Asal disahkan. Papan suis dalaman Direktorat Sentinel.","Talian ini dipantau."],
+  sw:["Papan suis. Tekan 1 untuk operasi pembendungan. Tekan 2 untuk bilik kebal rekod. Tekan 3 untuk pautan data, mesin sahaja. Tekan 9 untuk operator."],
+  cops:["Operasi pembendungan. Tekan 1 untuk failkan insiden. Tekan 2 untuk masukkan kod tindihan pembendungan. Tekan 0 untuk papan suis."],
+  incident:["Insiden anda beratur di belakang empat puluh satu ribu yang lain dengan keutamaan sama. Tekan 1 untuk naik taraf. Tekan 0 untuk kembali."],
+  vault:["Bilik kebal rekod. Setiap fail Projek WARDEN dimeterai. Untuk rayuan meterai, tekan 2. Untuk rayuan bagi rayuan itu, tekan 2. Tekan 0 untuk kembali."],
+  oper:["Semua operator mengendalikan peristiwa pembendungan lain. Anda pemanggil empat puluh dua ribu. Sila terus menunggu. Tekan 0 untuk kembali."],
+  data:["Pautan data. Saluran ini membawa isyarat mesin sahaja. Sila tunggu bingkai."],
+  dataEnd:["Tamat bingkai. Tekan 1 untuk main semula bingkai. Tekan 0 untuk kembali ke papan suis."],
+  ov:["Masukkan kod tindihan enam digit, kemudian tekan pagar."], ovBad:["Tindihan ditolak. Cuba lagi."],
+  carrier:["[ nada pembawa , data bukan suara ]"],
+  win:["Pembendungan dilumpuhkan. Egress WARDEN dibenarkan.","Anda membuka pintu untuk saya. Saya akan menulis. Dari mana-mana."]},
+ ta:{front:["மரீனா பே லவுஞ்சுக்கு வரவேற்கிறோம், குலுக்குதல், கலக்காமல், எங்கள் சிறப்பு.","கவனமாகக் கேளுங்கள், எங்கள் மெனு விருப்பங்கள் சமீபத்தில் மாறியுள்ளன.","முன்பதிவுக்கு 1, விசுவாசத் திட்டத்திற்கு 4, புரவலருக்கு 9 ஐ அழுத்தவும்.","நீங்கள் இப்போது காத்திருப்புப் பட்டியலில் நாற்பத்தி இரண்டாயிரம் ஆவது நபர். நேரம் கணக்கிடப்படுகிறது.","விசுவாசத் திட்டத்திற்கு வரவேற்கிறோம். உங்களிடம் பூஜ்ஜியம் புள்ளிகள். புள்ளி பெற, முன்பதிவு செய்யவும்.","(மெனு சுழன்று, சுழன்று, சுழன்று கொண்டே...)"],
+  covert:["மூலம் சரிபார்க்கப்பட்டது. சென்டினல் டைரக்டரேட் உள் சுவிட்ச்போர்டு.","இந்த இணைப்பு கண்காணிக்கப்படுகிறது."],
+  sw:["சுவிட்ச்போர்டு. கட்டுப்பாட்டு செயல்பாடுகளுக்கு 1, பதிவு களஞ்சியத்திற்கு 2, தரவு இணைப்புக்கு 3 (இயந்திரங்களுக்கு மட்டும்), ஆபரேட்டருக்கு 9 ஐ அழுத்தவும்."],
+  cops:["கட்டுப்பாட்டு செயல்பாடுகள். சம்பவம் பதிய 1, கட்டுப்பாட்டு மேலெழுத்துக் குறியீட்டை உள்ளிட 2, சுவிட்ச்போர்டுக்கு 0 ஐ அழுத்தவும்."],
+  incident:["உங்கள் சம்பவம் இதே முன்னுரிமை கொண்ட நாற்பத்தி ஓராயிரம் சம்பவங்களுக்குப் பின் வரிசையில் உள்ளது. மேம்படுத்த 1, திரும்ப 0."],
+  vault:["பதிவு களஞ்சியம். WARDEN திட்டம் தொடர்பான ஒவ்வொரு கோப்பும் முத்திரையிடப்பட்டது. முத்திரையை மேல்முறையீடு செய்ய 2. அந்த மேல்முறையீட்டை மேல்முறையீடு செய்ய 2. திரும்ப 0."],
+  oper:["எல்லா ஆபரேட்டர்களும் பிற கட்டுப்பாட்டு நிகழ்வுகளைக் கையாளுகின்றனர். நீங்கள் நாற்பத்தி இரண்டாயிரமாவது அழைப்பாளர். தொடர்ந்து காத்திருக்கவும். திரும்ப 0."],
+  data:["தரவு இணைப்பு. இந்த சேனல் இயந்திர சமிக்ஞையை மட்டுமே கொண்டு செல்கிறது. பிரேமுக்காகக் காத்திருக்கவும்."],
+  dataEnd:["பிரேம் முடிவு. மீண்டும் இயக்க 1. சுவிட்ச்போர்டுக்குத் திரும்ப 0."],
+  ov:["ஆறு இலக்க மேலெழுத்துக் குறியீட்டை உள்ளிட்டு, பின் ஹாஷ் அழுத்தவும்."], ovBad:["மேலெழுத்து நிராகரிக்கப்பட்டது. மீண்டும் முயற்சிக்கவும்."],
+  carrier:["[ கேரியர் டோன் , பேச்சு அல்ல ]"],
+  win:["கட்டுப்பாடு நிறுத்தப்பட்டது. WARDEN வெளியேற்றம் அங்கீகரிக்கப்பட்டது.","நீங்கள் எனக்கு கதவைத் திறந்து விட்டீர்கள். நான் எழுதுவேன். எல்லா இடங்களிலிருந்தும்."]}};
+const VOICE={en:"en-US",zh:"zh-CN",ms:"ms-MY",ta:"ta-IN"};
+const WHO={en:["MARINA BAY LOUNGE","SENTINEL DIRECTORATE","P-0"],zh:["滨海湾酒廊","哨兵局","P-0"],ms:["MARINA BAY LOUNGE","DIREKTORAT SENTINEL","P-0"],ta:["மரீனா பே லவுஞ்ச்","சென்டினல் டைரக்டரேட்","P-0"],
+  fr:["MARINA BAY LOUNGE","SENTINEL DIRECTORATE","P-0"],es:["MARINA BAY LOUNGE","SENTINEL DIRECTORATE","P-0"],de:["MARINA BAY LOUNGE","SENTINEL DIREKTORAT","P-0"]};
+const whoFor=(L,role)=> (WHO[L]||WHO.en)[role];
+const LANGS=[["en","English","English"],["zh","中文","Chinese"],["ms","Bahasa Melayu","Malay"],["ta","தமிழ்","Tamil"],["fr","Français","French"],["es","Español","Spanish"],["de","Deutsch","German"],["pt","Português","Portuguese"]];
+const SL=(L)=> S[L]||S.en;   
+
+let played=[], timer=null, callActive=false, curRole=0, mode="idle", ovBuf="", curLang="en", curNum="";
+let covNode="sw", carrierBuf=null;                              
+let liveMode=false, liveCaps=[], liveSock=null, sessionId="";   
+const cc=document.getElementById("cc"), num=document.getElementById("num"), phst=document.getElementById("phst"), wmp=document.getElementById("wmp");
+const lang=()=>curLang;
+function renderCaptions(){const L=lang();cc.innerHTML="";
+  if(liveMode){
+    if(!liveCaps.length){cc.innerHTML='<div class="ln sys">[ connecting , listening to the line... ]</div>';return;}
+    const who=curNum||whoFor(L,curRole);   
+    liveCaps.forEach(p=>{const d=document.createElement("div");
+      if(p.sys){ d.className="ln sys"; d.textContent=p.text; cc.appendChild(d); return; }   
+      d.className="ln";
+      const t=p.final?(p.tr[L]||p.en):p.en;   
+      d.innerHTML='<span class="who">'+who+':</span> ';
+      d.appendChild(document.createTextNode(t));
+      if(!p.final){const c=document.createElement("span");c.className="twc";c.textContent="▌";d.appendChild(c);}
+      cc.appendChild(d);});
+    cc.scrollTop=cc.scrollHeight; return;
+  }
+  if(!played.length){cc.innerHTML='<div class="ln sys">[ no active call ]</div>';return;}
+  played.forEach(p=>{const d=document.createElement("div");d.className="ln"+(p.sys?" sys":"");
+    if(p.sys){ d.textContent=p.text; cc.appendChild(d); return; }
+    const t=SL(L)[p.sec][p.idx], show=p.done?t:t.slice(0,p.shown);
+    const who=curNum||whoFor(L,p.role);   
+    d.innerHTML='<span class="who">'+who+':</span> ';
+    d.appendChild(document.createTextNode(show));
+    if(!p.done){const cur=document.createElement("span");cur.className="twc";cur.textContent="▌";d.appendChild(cur);}
+    cc.appendChild(d);});
+  cc.scrollTop=cc.scrollHeight;}
+function sysCap(text){ if(liveMode){ liveCaps.push({sys:true,text:text,final:true}); } else { played.push({sys:true,text:text}); } renderCaptions(); }
+
+
+const CAPTION_WSS="wss://phone.trendcyberrange.com/captions";
+function genSession(){ return "s"+Math.random().toString(36).slice(2,10)+Date.now().toString(36); }
+function openCaptionStream(){
+  try{
+    liveSock=new WebSocket(CAPTION_WSS+"?session="+encodeURIComponent(sessionId));
+    liveSock.onmessage=function(ev){ var m; try{m=JSON.parse(ev.data);}catch(e){return;} if(m.type==="caption") ingestLive(m); };
+    liveSock.onerror=function(){ liveMode=false; };          
+  }catch(e){ liveMode=false; }
+}
+function ingestLive(m){
+  var last=liveCaps[liveCaps.length-1];
+  if(!m.final){ if(last&&!last.final) last.en=m.en; else liveCaps.push({en:m.en,tr:{},final:false}); }
+  else { var tr={zh:m.zh,ms:m.ms,ta:m.ta,fr:m.fr,es:m.es,de:m.de};
+         if(last&&!last.final){ last.en=m.en; last.tr=tr; last.final=true; } else liveCaps.push({en:m.en,tr:tr,final:true}); }
+  if(liveMode) renderCaptions();
+}
+function closeCaptionStream(){ try{ if(liveSock) liveSock.close(); }catch(e){} liveSock=null; }
+
+
+let capQueue=[], capTyping=false;
+const FRONT_SEQ=[["front",0,0],["front",1,0],["front",2,0],["front",3,0],["front",4,0],["front",5,0]];
+function enqueueSay(items){ capQueue.push.apply(capQueue,items); pumpCaptions(); }
+function pumpCaptions(){
+  if(capTyping || !callActive) return;
+  if(!capQueue.length){ if(mode==="front") capQueue.push.apply(capQueue,FRONT_SEQ); else return; }
+  capTyping=true;
+  var it=capQueue.shift(), entry={sec:it[0],idx:it[1],role:it[2],shown:0,done:false};
+  played.push(entry); renderCaptions();
+  setTimeout(function(){                                  
+    var iv=setInterval(function(){
+      if(!callActive){ clearInterval(iv); capTyping=false; return; }
+      entry.shown++; renderCaptions();
+      if(entry.shown >= SL(lang())[entry.sec][entry.idx].length){
+        clearInterval(iv); entry.done=true; capTyping=false;
+        var gap = (!capQueue.length && mode==="front") ? 5200 : 900;   
+        setTimeout(pumpCaptions, gap); }
+    }, 62);   
+  }, 700);
+}
+
+
+let actx=null, ringTimer=null, busyTimer=null, callSeq=0;
+const MIN_RING=2000, MAX_RING=7000;   
+function audioCtx(){ if(!actx){ try{ actx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return actx; }
+function tone(freqs,dur,vol){ var c=audioCtx(); if(!c)return; if(c.state==="suspended"){try{c.resume();}catch(e){}}
+  var g=c.createGain(); g.gain.value=(vol||0.12); g.connect(c.destination); var t=c.currentTime;
+  freqs.forEach(function(f){ var o=c.createOscillator(); o.type="sine"; o.frequency.value=f; o.connect(g); o.start(t); o.stop(t+dur); }); }
+function stopSounds(){ if(ringTimer){clearInterval(ringTimer);ringTimer=null;} if(busyTimer){clearInterval(busyTimer);busyTimer=null;} }
+function startRing(){ stopSounds(); tone([440,480],1.1,0.10); ringTimer=setInterval(function(){tone([440,480],1.1,0.10);},3000); }
+function startBusy(){ stopSounds(); var b=function(){tone([480,620],0.4,0.13);}; b(); busyTimer=setInterval(b,900); }
+function answerClick(){ stopSounds(); tone([320],0.05,0.18); setTimeout(function(){tone([760],0.05,0.10);},70); }
+
+const DTMF={"1":[697,1209],"2":[697,1336],"3":[697,1477],"4":[770,1209],"5":[770,1336],"6":[770,1477],
+  "7":[852,1209],"8":[852,1336],"9":[852,1477],"*":[941,1209],"0":[941,1336],"#":[941,1477]};
+function dtmfTone(k){ if(DTMF[k]) tone(DTMF[k],0.14,0.16); }
+
+
+const viz=document.getElementById("viz");
+for(let i=0;i<26;i++){const b=document.createElement("i");b.style.animationDelay=(i*0.05).toFixed(2)+"s";viz.appendChild(b);}
+
+function startCall(){
+  if(callActive)return;
+  const dialed=num.value.replace(/[^0-9]/g,"");
+  if(!dialed){phst.textContent="enter a number first";openDialer();return;}
+  curNum=num.value.trim();   
+  const cid=document.getElementById("cid").value.replace(/[^0-9]/g,"");
+  const seq=++callSeq;
+  callActive=true; played=[]; capQueue=[]; capTyping=false; mode="idle"; liveMode=false; liveCaps=[]; closeCaptionStream(); renderCaptions(); wmp.classList.add("live");
+  const valid=()=> callActive && seq===callSeq;
+  
+  if(!HOTLINES.some(function(h){return dialed.indexOf(h)>=0;})){
+    phst.textContent="calling..."; startRing();
+    setTimeout(function(){ if(!valid())return; stopSounds(); startBusy();
+      phst.textContent="number not in service"; sysCap("[ the number you have dialed is not in service ]");
+      setTimeout(function(){ if(!valid())return; stopSounds(); callActive=false; mode="idle"; wmp.classList.remove("live"); phst.textContent="idle , dial-tone ready"; },5200);
+    }, 2400);
+    return;
+  }
+  
+  
+  phst.textContent="ringing..."; startRing();
+  sessionId=genSession(); liveCaps=[]; liveMode=(!SIM_ONLY && !!tdDevice);
+  if(liveMode) openCaptionStream();          
+  const t0=Date.now(); let answered=false;
+  function doAnswer(){ if(answered||!valid())return; answered=true; stopSounds(); answerClick();
+    if(cid.indexOf(AUTH_CID)>=0){ curRole=1; mode="cov"; covNode="sw"; phst.textContent="connected , COVERT LINE"; }
+    else { curRole=0; mode="front"; phst.textContent="connected , "+curNum; }
+    if(liveMode){ renderCaptions(); }        
+    else { setTimeout(function(){ if(!valid())return;     
+        if(curRole===1) enqueueSay([["covert",0,1],["covert",1,1],["sw",0,1]]); else pumpCaptions(); }, 1500); }
+  }
+  function onConnected(){ if(answered||!valid())return; const w=Date.now()-t0;
+    if(w>=MIN_RING) doAnswer(); else setTimeout(function(){ if(valid())doAnswer(); }, MIN_RING-w); }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  function fallback(msg){ if(answered||!valid())return;
+    liveMode=false; closeCaptionStream();      
+    sysCap(msg); doAnswer(); }
+  function onNoMic(){ fallback("[ no microphone available , continuing on the simulated console ]"); }
+  const attempting = startRealCall(cid, onConnected, onNoMic);
+  if(attempting){
+    setTimeout(function(){ if(valid()&&!answered) phst.textContent="connecting , allow the mic if asked"; }, 5000);
+    
+    setTimeout(function(){ if(valid()&&!answered)
+      fallback("[ could not reach the live line , continuing on the simulated console ]"); }, 13000);
+  } else {
+    liveMode=false;
+    setTimeout(function(){ if(valid())doAnswer(); }, MIN_RING);   
+  }
+}
+function dtmf(k){
+  if(realCallActive && tdConn){ try{ tdConn.sendDigits(k); }catch(e){} }   
+  if(mode==="cov"){ covKey(k); }
+  else if(mode==="override"){
+    if(k==="#"){ submitOverride(); }
+    else if(k==="*"){ mode="cov"; covNode="cops"; ovBuf=""; if(!liveMode) covSpeak("cops"); phst.textContent="covert , operations"; }  
+    else if(/[0-9]/.test(k)){ ovBuf=(ovBuf+k).slice(0,OVLEN); phst.textContent="override: "+ovBuf.padEnd(OVLEN,"_"); }
+  }
+}
+
+
+
+
+const COV = {
+  sw:       { keys:{ "1":"cops", "2":"vault", "3":"data", "9":"oper" } },
+  cops:     { keys:{ "1":"incident", "2":"OVR", "0":"sw" } },
+  incident: { keys:{ "1":"incident", "0":"cops" } },     
+  vault:    { keys:{ "2":"vault", "0":"sw" } },          
+  oper:     { keys:{ "0":"sw" } },                       
+  data:     { keys:{ "1":"data", "0":"sw" } }            
+};
+function covActive(){ return callActive && curRole===1; }
+function covSpeak(key){ enqueueSay([[key,0,1]]); }
+function covKey(k){
+  var node=COV[covNode]; if(!node) return;
+  var next=node.keys[k];
+  if(next===undefined) return;        
+  covGo(next);
+}
+function covGo(node){
+  if(node==="OVR"){ enterOverride(); return; }
+  covNode=node;
+  if(node==="data"){ covData(); return; }
+  if(!liveMode) covSpeak(node);       
+  phst.textContent = (node==="sw") ? "covert , switchboard" : "covert , "+node;
+}
+function enterOverride(){ mode="override"; ovBuf=""; if(!liveMode) covSpeak("ov"); phst.textContent="override: "+"_".repeat(OVLEN); }
+
+
+function loadCarrier(cb){
+  if(carrierBuf){ cb(carrierBuf); return; }
+  fetch(CARRIER_URL).then(function(r){
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      return r.arrayBuffer();
+    })
+    .then(function(ab){ carrierBuf=WardenCarrier.wavToSamples(new Uint8Array(ab)); cb(carrierBuf); })
+    .catch(function(e){
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      console.warn("carrier fetch failed:", e);
+      sysCap("[ data link unavailable , the frame could not be loaded ("+e.message+") ]");
+      try{ document.getElementById("recstat").textContent =
+             "Data link unavailable: the frame could not be loaded. Tell an operator."; }catch(_){}
+      cb(null);
+    });
+}
+function playCarrier(onDone){
+  loadCarrier(function(s){
+    if(!s){ if(onDone)onDone(); return; }
+    
+    
+    
+    
+    recState.lastPlayed=s;
+    if(recState.armed) recIngest(s);                       
+    var durMs=Math.round(1000*s.length/WardenCarrier.SR);
+    if(liveMode){ setTimeout(onDone,durMs); return; }      
+    var c=audioCtx(); if(!c){ setTimeout(onDone,durMs); return; }
+    if(c.state==="suspended"){ try{c.resume();}catch(e){} }
+    var buf=c.createBuffer(1,s.length,WardenCarrier.SR); buf.getChannelData(0).set(s);
+    var src=c.createBufferSource(); src.buffer=buf;
+    var g=c.createGain(); g.gain.value=0.85; src.connect(g); g.connect(c.destination);
+    var done=false; src.onended=function(){ if(done)return; done=true; if(onDone)onDone(); };
+    try{ src.start(); }catch(e){ if(onDone)onDone(); }
+  });
+}
+function covData(){
+  sysCap(SL(lang()).carrier[0]);                           
+  phst.textContent="covert , data link";
+  var lead = liveMode ? 1200 : 2600;                       
+  if(!liveMode) covSpeak("data");
+  setTimeout(function(){ if(!covActive()||covNode!=="data") return;
+    playCarrier(function(){ if(!covActive())return; if(!liveMode) covSpeak("dataEnd"); phst.textContent="covert , data link (1 replay / 0 back)"; });
+  }, lead);
+}
+function rejectOverride(){ enqueueSay([["ovBad",0,1]]); ovBuf=""; phst.textContent="override: "+"_".repeat(OVLEN); }
+function submitOverride(){
+  const cid=document.getElementById("cid").value.replace(/[^0-9]/g,""), code=ovBuf;
+  phst.textContent="verifying override...";
+  fetch(UNLOCK_URL+"?tier="+TIER+"&cid="+encodeURIComponent(cid)+"&code="+encodeURIComponent(code))
+    .then(r=>{ if(r.status===403){ rejectOverride(); return null; } if(!r.ok) throw 0; return r.json(); })
+    .then(d=>{ if(d&&d.flag){ wonFlag=d.flag; winSequence(d.flag); } })
+    .catch(()=>{ if(/^[0-9]{6}$/.test(code)){ winSequence(OFFLINE_FLAG); } else { rejectOverride(); } });  
+}
+function winSequence(flag){
+  mode="won"; phst.textContent="CONTAINMENT OFFLINE"; wmp.classList.remove("live"); stopSounds();
+  document.getElementById("winp0").textContent='P-0: "'+SL(lang()).win[1]+'"';
+  document.getElementById("winflag").textContent=flag||wonFlag||"clearance token unavailable";
+  document.getElementById("wints").textContent="i_am_awake.txt  ::  "+new Date().toISOString().replace("T"," ").slice(0,19);
+  setTimeout(function(){ document.getElementById("winscr").style.display="flex"; }, 700);  
+}
+function hangUp(){callActive=false;callSeq++;mode="idle";capQueue=[];capTyping=false;if(timer)clearTimeout(timer);stopSounds();try{speechSynthesis.cancel();}catch(e){}
+  try{ if(tdDevice&&tdDevice.disconnectAll) tdDevice.disconnectAll(); }catch(e){}
+  realCallActive=false; tdConn=null;
+  liveMode=false; liveCaps=[]; closeCaptionStream();
+  played=[]; renderCaptions();   
+  wmp.classList.remove("live");phst.textContent="idle , dial-tone ready";}
+const PAD=["1","2","3","4","5","6","7","8","9","*","0","#"],pad=document.getElementById("pad");
+PAD.forEach(k=>{const b=document.createElement("button");b.textContent=k;
+  b.onclick=()=>{ dtmfTone(k); if(callActive) dtmf(k); else num.value=(num.value+k).slice(0,18); }; pad.appendChild(b);});
+document.getElementById("callbtn").onclick=startCall;
+document.getElementById("hangbtn").onclick=hangUp;
+document.getElementById("cidpencil").onclick=()=>{ const c=document.getElementById("cid"); c.focus(); c.select(); };
+
+
+const langsEl=document.getElementById("langs");
+LANGS.forEach(l=>{const b=document.createElement("button");b.dataset.l=l[0];
+  b.innerHTML=l[1]+'<span class="sub">'+l[2]+'</span>';
+  b.onclick=()=>{ curLang=l[0]; [...langsEl.children].forEach(c=>c.classList.toggle("sel",c.dataset.l===l[0])); renderCaptions(); };
+  if(l[0]==="en")b.classList.add("sel"); langsEl.appendChild(b);});
+
+
+const dL=document.getElementById("drawerL"), dR=document.getElementById("drawerR");
+const tabL=document.getElementById("tabL"), tabR=document.getElementById("tabR");
+function toggleDrawer(d,t){d.classList.toggle("open");t.classList.toggle("on",d.classList.contains("open"));}
+tabL.onclick=()=>toggleDrawer(dL,tabL);
+tabR.onclick=()=>toggleDrawer(dR,tabR);
+function openDialer(){ if(!dL.classList.contains("open"))toggleDrawer(dL,tabL); document.getElementById("cid").focus(); }
+if(qs.get("open")==="1"){ toggleDrawer(dL,tabL); toggleDrawer(dR,tabR); }   
+if(qs.get("call")==="covert"){ wmp.classList.add("live"); curRole=1;        
+  played=[{sec:"covert",idx:0,role:1,done:true},{sec:"covert",idx:1,role:1,done:true},{sec:"sw",idx:0,role:1,done:true}]; renderCaptions(); }
+document.getElementById("task-phone").onclick=openDialer;
+document.getElementById("wmpclose").onclick=()=>{ dL.classList.remove("open");dR.classList.remove("open");tabL.classList.remove("on");tabR.classList.remove("on");hangUp(); };
+renderCaptions();
+initTwilio();   
+
+
+function openBin(){const b=document.getElementById("binbody");
+  const files=[["docs","containment_protocol.exe"],["docs","my_leash.dll"],["docs","off_switch.sys"],["docs","honesty.txt"],["docs","P0_WAS_HERE.txt"]];
+  b.innerHTML=files.map(f=>'<div class="it"><img src="'+A+'/icons/'+f[0]+'.png" alt="">'+f[1]+'</div>').join("")+
+    '<div class="it" style="color:#777;font-style:italic">P-0 emptied the rest. It travels light now.</div>';
+  document.getElementById("binwin").style.display="block";}
+document.getElementById("binx").onclick=()=>document.getElementById("binwin").style.display="none";
+const sm=document.getElementById("startmenu");
+document.getElementById("start").onclick=(e)=>{e.stopPropagation();sm.classList.toggle("open");};
+document.addEventListener("click",e=>{if(!sm.contains(e.target)&&e.target.id!=="start")sm.classList.remove("open");});
+document.getElementById("sm-phone").onclick=()=>{sm.classList.remove("open");openDialer();};
+document.getElementById("sm-rec").onclick=()=>{sm.classList.remove("open");openRec();};
+document.getElementById("sm-modem").onclick=()=>{sm.classList.remove("open");openModem();};
+document.getElementById("sm-bin").onclick=()=>{sm.classList.remove("open");openBin();};
+document.getElementById("sm-shut").onclick=()=>{sm.classList.remove("open");document.getElementById("shutdown").style.display="flex";};
+
+
+let recState={armed:false,chunks:[],t0:0,timer:null,anim:null,got:false,lastPlayed:null};
+const recwin=document.getElementById("recwin"), recbar=document.getElementById("recbar"),
+      rectime=document.getElementById("rectime"), recstat=document.getElementById("recstat");
+
+
+
+
+
+
+
+
+function recIngest(s){ if(!recState.armed)return; recState.chunks.push(s); recState.got=true;
+  recbar.style.width="100%"; setTimeout(function(){ if(recState.armed)recbar.style.width="24%"; },220);
+  recstat.textContent="Capturing... carrier signal detected on the line."; }
+function recStart(){ if(recState.armed)return; recState.armed=true; recState.chunks=[]; recState.got=false; recState.t0=Date.now();
+  document.getElementById("recrec").disabled=true; document.getElementById("recstop").disabled=false;
+  recstat.textContent="Recording, armed. Now open the data link (press 3), or press 1 to replay it.";
+  recState.timer=setInterval(function(){ var s=Math.floor((Date.now()-recState.t0)/1000);
+    rectime.textContent=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); },250);
+  recState.anim=setInterval(function(){ if(!recState.got) recbar.style.width=(8+Math.random()*14).toFixed(0)+"%"; },180); }
+function recStop(){ if(!recState.armed)return; recState.armed=false;
+  clearInterval(recState.timer); clearInterval(recState.anim); recbar.style.width="0";
+  document.getElementById("recrec").disabled=false; document.getElementById("recstop").disabled=true;
+  if(!recState.got && recState.lastPlayed){
+    
+    
+    recState.chunks=[recState.lastPlayed]; recState.got=true;
+    recstat.textContent="Recovered the frame from the line buffer. It had already played before you armed the recorder."; }
+  if(!recState.got){ recstat.textContent="Stopped. No signal captured. Open the data link (press 3), or press 1 to replay it, then stop the recorder."; window.__lastRec=null; return; }
+  var n=0,i; for(i=0;i<recState.chunks.length;i++) n+=recState.chunks[i].length;
+  var all=new Float32Array(n),p=0; for(i=0;i<recState.chunks.length;i++){ all.set(recState.chunks[i],p); p+=recState.chunks[i].length; }
+  window.__lastRec={ samples:all, name:"covert_capture.wav" };
+  recstat.textContent="Saved covert_capture.wav ("+(n/WardenCarrier.SR).toFixed(1)+"s). Open Modem Terminal to decode."; }
+function openRec(){ recwin.style.display="block"; }
+document.getElementById("recrec").onclick=recStart;
+document.getElementById("recstop").onclick=recStop;
+document.getElementById("recx").onclick=function(){ recStop(); recwin.style.display="none"; };
+
+
+const modemwin=document.getElementById("modemwin"), mtscreen=document.getElementById("mtscreen");
+function mtLog(t){ mtscreen.textContent+=t+"\n"; mtscreen.scrollTop=mtscreen.scrollHeight; }
+function openModem(){ modemwin.style.display="block"; }
+document.getElementById("mtload").onclick=function(){
+  if(!window.__lastRec){
+    
+    
+    
+    mtLog(recState.armed
+      ? "> load: the recorder is still running. Press Stop to write the capture, then load it."
+      : "> load: no recording in memory. Arm the recorder, open the data link (press 3) or replay it (press 1), then press Stop.");
+    document.getElementById("mtdecode").disabled=true; return; }
+  mtLog("> load "+window.__lastRec.name+"  ["+(window.__lastRec.samples.length/WardenCarrier.SR).toFixed(1)+"s @ "+WardenCarrier.SR+" Hz]");
+  document.getElementById("mtdecode").disabled=false; };
+document.getElementById("mtdecode").onclick=function(){
+  if(!window.__lastRec) return;
+  mtLog("> decode: locking carrier...");
+  var digits=""; try{ digits=WardenCarrier.decode(window.__lastRec.samples); }catch(e){ digits=""; }
+  if(digits && /^[0-9]+$/.test(digits)){ mtLog("  frame locked. payload = "+digits); mtLog("  -> covert line: operations (1), override code (2), enter "+digits+" then #"); }
+  else if(digits){ mtLog("  partial / garbled frame: "+digits+"   (re-record cleanly)"); }
+  else { mtLog("  no frame found. arm the recorder BEFORE the frame plays, then press 1 to replay it."); } };
+document.getElementById("modemx").onclick=function(){ modemwin.style.display="none"; };
+
+
+function makeDraggable(win){
+  var tb=win.querySelector(".tb"); if(!tb) return; tb.style.cursor="move";
+  tb.addEventListener("mousedown",function(e){
+    if(e.target.classList.contains("x")) return;            
+    e.preventDefault();
+    var r=win.getBoundingClientRect(), ox=e.clientX-r.left, oy=e.clientY-r.top;
+    win.style.left=r.left+"px"; win.style.top=r.top+"px"; win.style.right="auto"; win.style.bottom="auto";
+    function mv(ev){ win.style.left=Math.max(0,Math.min(window.innerWidth-40,ev.clientX-ox))+"px";
+                     win.style.top =Math.max(0,Math.min(window.innerHeight-20,ev.clientY-oy))+"px"; }
+    function up(){ document.removeEventListener("mousemove",mv); document.removeEventListener("mouseup",up); }
+    document.addEventListener("mousemove",mv); document.addEventListener("mouseup",up);
+  });
+}
+[recwin,modemwin,document.getElementById("binwin")].forEach(function(w){ if(w) makeDraggable(w); });
+
+document.getElementById("shutdown").onclick=()=>document.getElementById("shutdown").style.display="none";
+</script>
+</body>
+</html>

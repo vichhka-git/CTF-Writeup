@@ -1,0 +1,12 @@
+# Local challenge/session material must never be added to the public mirror.
+**/.env
+**/exported-cookies.txt
+**/discord-cookies.txt
+**/flag.txt
+**/flag_*.txt
+**/recovered_flag.txt
+**/agent_workspace/
+**/.playwright-mcp/
+**/.ctf-bus/
+**/__pycache__/
+*.pyc

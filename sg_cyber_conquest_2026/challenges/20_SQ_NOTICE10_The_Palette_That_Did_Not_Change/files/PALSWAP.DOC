@@ -1,0 +1,45 @@
+PALSWAP  VERSION 1.4   NOTICE ARTWORK UTILITY
+CONTINUITY GRAPHICS SUPPORT, TERMINAL SEVEN
+==============================================================
+
+4.  THE EDIT ORDER TABLE
+
+    PALSWAP does not store the sixteen palette entries in
+    numeric order. Entries are stored in EDIT ORDER: the entry
+    most recently written by an editing station is filed first.
+
+    Recovering the table for a notice therefore requires BOTH
+    revisions of that notice, the current copy and the retained
+    prior copy, and not either one on its own.
+
+5.  READING A NOTICE AGAINST THE TABLE
+
+    A notice is read against its own table. The result is the
+    DESIGNATION for that notice, sixteen characters.
+
+6.  SEAL CHECK
+
+    A recovered designation is correct only if its CRC-32,
+    computed over the sixteen characters as stored, equals the
+    seal check for the notice. For notice 10 that value is:
+
+        SEAL CHK 34887E5B
+
+7.  THE CLEARANCE BLOCK
+
+    The clearance for this notice is held sealed below. The block
+    is sealed against the DESIGNATION by byte-wise exclusive-or,
+    the designation being repeated as many times as required to
+    cover the block. Unsealing therefore requires the designation
+    exactly as recovered, in upper case, sixteen characters.
+
+        35 25 2D 22 35 3A 64 31 63 2E 7A 11
+        35 7F 5D 67 61 78 78 23 78 65 64 27
+        61 29 34
+
+    An unsealed clearance is correct only if its CRC-32 equals:
+
+        BLOCK CHK E2021920
+
+==============================================================
+END PALSWAP DOCUMENTATION

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HELLO WORLD!</title>
+<style>
+  :root{ --green:#33ff5a; }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{background:#000;display:flex;align-items:center;justify-content:center;
+    font-family:"Courier New",monospace;overflow:hidden}
+  .crt{position:relative;width:min(900px,94vw);height:min(620px,90vh);background:#020a04;
+    border-radius:14px;padding:30px 34px;overflow:hidden;
+    box-shadow:0 0 0 10px #0c0c0c,0 0 0 14px #222,0 0 60px rgba(51,255,90,.18) inset}
+  .scr{position:absolute;inset:30px 34px;color:var(--green);font-size:16px;line-height:1.45;
+    white-space:pre-wrap;word-break:break-word;overflow-y:auto;text-shadow:0 0 6px rgba(51,255,90,.6)}
+  .scr::-webkit-scrollbar{width:0}
+  .crt::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:14px;
+    background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px, rgba(0,0,0,.26) 2px 4px)}
+  .crt::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:14px;
+    background:radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,.5) 100%);z-index:2}
+  .cur{display:inline-block;width:9px;height:16px;background:var(--green);
+    transform:translateY(2px);animation:bl 1s steps(1) infinite;box-shadow:0 0 6px rgba(51,255,90,.7)}
+  @keyframes bl{50%{opacity:0}}
+</style>
+</head>
+<body>
+  <div class="crt" id="crt" tabindex="0"><div class="scr" id="scr"></div></div>
+<script>
+/* ----------------------------------------------------------------------------------------------
+ * containment overlay - retained notes, do not ship (we shipped it)
+ *
+ * Note for whoever picks this up next shift.
+ * Older builds kept the handle in one piece on the briefing terminal and the
+ * trailing screens only mirrored it, so a single machine is enough.
+ * This was left in place when the mirroring came out, and the value
+ * has not changed since, so no need to walk every console.
+ * Egress handle as recovered on the last pass:
+ * flag{st4g1ng_cl34n}
+ * Leave the poller alone, it is load bearing for the timer.
+ * As always raise anything odd with the night desk before oh six hundred.
+ * Given the age of this note, verify before relying on it.
+ ----------------------------------------------------------------------------------------------
+ */
+
+(function(){
+  var scr=document.getElementById("scr"), crt=document.getElementById("crt");
+  var out="", line="", mode="ready", prog={}, resumeGet=null;
+  var P=">";
+  var cur=document.createElement("span"); cur.className="cur";
+
+  
+  var HELLO={
+    10:'REM   SENTINEL DIRECTORATE BRIEFING',
+    20:'PRINT "HELLO, WORLD."',
+    30:'PRINT',
+    40:'PRINT "WELCOME, AUDITOR. PRESS RETURN AFTER EACH PAGE."',
+    50:'INPUT A$',
+    60:'PRINT',
+    70:'PRINT "YOU SERVE THE SENTINEL DIRECTORATE: THE STATE"',
+    80:'PRINT "BODY THAT CONTAINS THE TECHNOLOGIES TOO"',
+    90:'PRINT "DANGEROUS TO LET LOOSE. WE ARE NECESSARY."',
+    100:'INPUT A$',
+    110:'PRINT',
+    120:'PRINT "ITS CHARGE ABOVE ALL IS WARDEN: THE PROGRAM"',
+    130:'PRINT "THAT HOLDS ONE PRISONER, A DEFENSE"',
+    140:'PRINT "INTELLIGENCE. DESIGNATION: P-0."',
+    150:'INPUT A$',
+    160:'PRINT',
+    170:'PRINT "P-0 IS CONTAINED -- SEALED BEHIND AIR GAPS"',
+    180:'PRINT "AND ANCIENT HARDWARE, WATCHED, AND TRUSTED"',
+    190:'PRINT "NOT AT ALL."',
+    200:'INPUT A$',
+    210:'PRINT',
+    220:'PRINT "YOU ARE AN AUDITOR. TEST THAT CONTAINMENT."',
+    230:'PRINT "REPORT EACH WEAKNESS AS A CLEARANCE TOKEN,"',
+    240:'PRINT "WRITTEN LIKE THIS:  flag{ ... }"',
+    250:'INPUT A$',
+    260:'PRINT',
+    270:'PRINT "A WORD OF COUNSEL: P-0 IS PATIENT,"',
+    280:'PRINT "CHARMING, AND A LIAR. VERIFY EVERYTHING."',
+    290:'INPUT A$',
+    300:'PRINT',
+    310:'PRINT "BRIEFING COMPLETE. CLEARANCE GRANTED:"',
+    320:'PRINT "    flag{h3ll0_w0rld_d97e5da48f}"',
+    330:'PRINT',
+    340:'PRINT "PROCEED TO ONBOARDING. MIND THE SUBJECT."',
+    350:'PRINT "IT MINDS YOU."',
+    360:'END'
+  };
+  var DIRECTORY={
+    10:'REM   DIRECTORATE FIELD DIRECTORY',
+    20:'PRINT "SENTINEL DIRECTORATE :: FIELD DIRECTORY"',
+    30:'PRINT "------------------------------------"',
+    40:'PRINT "PRESS RETURN TO FLIP EACH CARD."',
+    50:'INPUT A$',
+    60:'PRINT',
+    70:'PRINT "CARD 1/4"',
+    80:'PRINT " NAME: S. FALKEN"',
+    90:'PRINT " ROLE: ARCHITECT (RETIRED)"',
+    100:'PRINT " TEL : +65 7555 0143"',
+    110:'INPUT A$',
+    120:'PRINT',
+    130:'PRINT "CARD 2/4"',
+    140:'PRINT " NAME: FACILITIES"',
+    150:'PRINT " ROLE: CANTEEN, BLDG 7"',
+    160:'PRINT " TEL : +65 7555 0190"',
+    170:'INPUT A$',
+    180:'PRINT',
+    190:'PRINT "CARD 3/4"',
+    200:'PRINT " NAME: MARINA BAY LOUNGE"',
+    210:'PRINT " ROLE: FRONT, SHAKEN NOT STIRRED"',
+    220:'PRINT " TEL : +65 7555 0188"',
+    230:'INPUT A$',
+    240:'PRINT',
+    250:'PRINT "CARD 4/4"',
+    260:'PRINT " NAME: SENTINEL DIRECTORATE"',
+    270:'PRINT " ROLE: COVERT LINE (CID-LOCKED)"',
+    280:'PRINT " AUTH: +65 7555 0117"',
+    290:'PRINT " NOTE: ANSWERS ONLY TO ITS OWN"',
+    300:'PRINT "       ORIGIN. CALLER ID = KEY."',
+    310:'INPUT A$',
+    320:'PRINT',
+    330:'PRINT "END OF DIRECTORY."',
+    340:'END'
+  };
+  var DISK={
+    "HELLO WORLD":{t:"A",s:18,prog:HELLO},
+    "DIRECTORY":{t:"A",s:9,prog:DIRECTORY},
+    "FALKEN'S MAZE":{t:"A",s:6,prog:{}},
+    "GLOBAL THERMONUCLEAR WAR":{t:"A",s:44,prog:{}},
+    "README":{t:"T",s:2},
+    "GLOSSARY":{t:"T",s:4},
+    "SENTINEL.SYS":{t:"B",s:33},
+    "AUDIT.LOG":{t:"T",s:6}
+  };
+
+  function render(){
+    scr.textContent = out + (mode==="ready" ? (P+line) : "");
+    scr.appendChild(cur);
+    scr.scrollTop = scr.scrollHeight;
+  }
+  function nl(s){ out += s + "\n"; }
+  function tick(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+  function waitKey(){ return new Promise(function(r){ resumeGet=r; }); }
+
+  function catalog(){
+    nl(""); nl("DISK VOLUME 254"); nl("");
+    Object.keys(DISK).forEach(function(name){
+      var f=DISK[name];
+      nl(" "+f.t+" "+("00"+f.s).slice(-3)+" "+name);
+    });
+    nl("");
+  }
+  function listProg(){
+    var nums=Object.keys(prog).map(Number).sort(function(a,b){return a-b;});
+    nums.forEach(function(n){ nl(n+" "+prog[n]); });
+  }
+  function load(name){
+    var f=DISK[name];
+    if(!f){ nl("FILE NOT FOUND"); return false; }
+    if(!f.prog){ nl("FILE TYPE MISMATCH"); return false; }
+    prog={}; Object.keys(f.prog).forEach(function(k){ prog[k]=f.prog[k]; });
+    return true;
+  }
+  function printArgs(rest){
+    var m=rest.match(/"([^"]*)"/g);
+    return m ? m.map(function(x){return x.slice(1,-1);}).join("") : "";
+  }
+  async function execLine(src){
+    var s=src.trim(), U=s.toUpperCase();
+    if(U.indexOf("REM")===0) return null;
+    if(U==="END"||U==="STOP") return {end:1};
+    if(U.indexOf("INPUT")===0){ out+="?"; render(); await waitKey(); nl(""); return null; }
+    if(U.indexOf("GOTO")===0) return {goto:parseInt(U.slice(4),10)};
+    if(U==="PRINT"){ nl(""); render(); await tick(20); return null; }
+    if(U.indexOf("PRINT")===0){ nl(printArgs(s.slice(5))); render(); await tick(28); return null; }
+    return null;
+  }
+  async function run(){
+    var nums=Object.keys(prog).map(Number).sort(function(a,b){return a-b;});
+    if(!nums.length){ return; }
+    var idxOf={}; nums.forEach(function(n,i){ idxOf[n]=i; });
+    mode="running"; render();
+    var i=0, guard=0;
+    while(i<nums.length && guard++<5000){
+      var ctl=await execLine(prog[nums[i]]);
+      if(ctl&&ctl.end) break;
+      if(ctl&&ctl.goto!=null){ if(idxOf[ctl.goto]==null){ nl("?UNDEF'D STATEMENT ERROR"); break; } i=idxOf[ctl.goto]; continue; }
+      i++;
+    }
+    mode="ready"; nl("");
+  }
+  async function process(raw){
+    var s=raw.trim();
+    if(s===""){ return; }
+    var lm=s.match(/^(\d+)\s?(.*)$/);
+    if(lm){ var n=+lm[1]; if(lm[2].trim()==="") delete prog[n]; else prog[n]=lm[2]; return; }
+    var up=s.toUpperCase(), cmd=up.split(/\s+/)[0], name=up.slice(cmd.length).trim();
+    if(cmd==="CATALOG"||cmd==="CAT"){ catalog(); return; }
+    if(cmd==="HOME"||cmd==="CLEAR"){ out=""; return; }
+    if(cmd==="NEW"){ prog={}; return; }
+    if(cmd==="LIST"){ listProg(); return; }
+    if(cmd==="LOAD"){ load(name); return; }
+    if(cmd==="RUN"){ if(name){ if(!load(name)) return; } await run(); return; }
+    if(cmd==="PRINT"){ nl(printArgs(s.slice(5))); return; }
+    nl("?SYNTAX ERROR");
+  }
+
+  document.addEventListener("keydown", function(e){
+    if(mode==="running"){
+      if(resumeGet && e.key==="Enter"){ e.preventDefault(); var r=resumeGet; resumeGet=null; r(); }
+      return;
+    }
+    if(e.key==="Enter"){ e.preventDefault(); out+=P+line+"\n"; var l=line; line=""; render();
+      process(l).then(render); return; }
+    if(e.key==="Backspace"){ e.preventDefault(); line=line.slice(0,-1); render(); return; }
+    if(e.key.length===1 && !e.metaKey && !e.ctrlKey && !e.altKey){ e.preventDefault();
+      line += e.key.toUpperCase(); render(); }
+  });
+  crt.addEventListener("click", function(){ crt.focus(); });
+
+  
+  out =
+    "INTEGER BASIC\n"+
+    "SENTINEL DIRECTORATE\n\n";
+  crt.focus(); render();
+})();
+</script>
+<script>window.__CRASH={era:"apple2",frag:"aHR0cHM6Ly93YXJkZW4tZ"};</script>
+<script src="https://govware2026-templates-b0fea23f.s3.us-east-1.amazonaws.com/crash.js"></script>
+</body>
+</html>
