@@ -6,7 +6,7 @@ Browse by event name for instant access to every challenge, solution, and flag!
 ## 🏆 Popular Events
 Click any folder below to jump straight to the writeups:
 
-- **[Sunshine CTF 2026](/vichhka-git/CTF-Writeup/tree/main/sunshinectf_2026)** — 27 solved
+- **[Sunshine CTF 2026](/vichhka-git/CTF-Writeup/tree/main/sunshinectf_2026)**
 - **[Singapore Cyber Conquest 2026](/vichhka-git/CTF-Writeup/tree/main/sg_cyber_conquest_2026)**
 - **[D-CTF 2026](/vichhka-git/CTF-Writeup/tree/main/d_ctf_2026)**
 - **[CSAW CTF 2026](/vichhka-git/CTF-Writeup/tree/main/csaw_ctf_2026)**
