@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sticky Sweets</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; }
+    body { margin: 0; background: #fff4fb; color: #43243b; }
+    main { max-width: 720px; margin: 8vh auto; padding: 2rem; }
+    .card { background: white; border: 2px solid #f2b8d8; border-radius: 24px;
+            padding: 2rem; box-shadow: 0 12px 30px #d58ab833; }
+    h1 { color: #c73583; margin-top: 0; }
+    label { display: block; margin: 1rem 0 .4rem; font-weight: 700; }
+    textarea { width: 100%; box-sizing: border-box; min-height: 110px;
+               border: 1px solid #e4a8c9; border-radius: 12px; padding: .8rem; }
+    button { margin-top: 1rem; background: #c73583; color: white; border: 0;
+             border-radius: 999px; padding: .8rem 1.4rem; cursor: pointer; }
+    #result { margin-top: 1rem; min-height: 1.5rem; }
+    .note { color: #80556f; font-size: .95rem; }
+  </style>
+</head>
+<body>
+<main><section class="card">
+  <h1>&#x1f36c; Sticky Sweets</h1>
+  <p>Send a custom candy order to our delivery gateway.</p>
+  <p class="note">Current candy couriers use delivery mode 2.</p>
+  <p class="note">Older couriers may describe delivery contents using more than one encoding.</p>
+  <form id="order-form">
+    <label for="order">Your order</label>
+    <textarea id="order" name="order" required>One box of strawberry drops</textarea>
+    <button>Place order</button>
+  </form>
+  <div id="result" role="status"></div>
+</section></main>
+<script>
+document.querySelector('#order-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const order = new URLSearchParams({ order: document.querySelector('#order').value });
+  const response = await fetch('/order', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Client-Version': '2' },
+    body: order
+  });
+  document.querySelector('#result').innerHTML = await response.text();
+});
+</script>
+</body>
+</html>
