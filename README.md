@@ -6,6 +6,7 @@ Browse by event name for instant access to every challenge, solution, and flag!
 ## 🏆 Popular Events
 Click any folder below to jump straight to the writeups:
 
+- **[DEADFACE CTF 2026](/vichhka-git/CTF-Writeup/tree/main/deadface_ctf_2026)**
 - **[FortID CTF 2026](/vichhka-git/CTF-Writeup/tree/main/fortid_ctf_2026)**
 - **[Sunshine CTF 2026](/vichhka-git/CTF-Writeup/tree/main/sunshinectf_2026)**
 - **[Singapore Cyber Conquest 2026](/vichhka-git/CTF-Writeup/tree/main/sg_cyber_conquest_2026)**
