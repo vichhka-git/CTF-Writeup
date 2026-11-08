@@ -22,7 +22,8 @@ Click any folder below to jump straight to the writeups:
 - **[GrabCON CTF 2021](/vichhka-git/CTF-Writeup/tree/main/GrabCON%20CTF%202021)**  
 - **[Hacker101 CTF](/vichhka-git/CTF-Writeup/tree/main/Hacker101%20CTF)**
 - **[Flu.xxx CTF 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/flu.xxx_2026)**
-- **[HiCTF 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/ctf_hiddeninvestigations_2026)
+- **[HiCTF 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/ctf_hiddeninvestigations_2026)**
+- **[CSCTF 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/csctf_2026)**
 
 ## How to Use This Repo
 1. Click any event folder above (or search for the folder name).
