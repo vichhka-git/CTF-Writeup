@@ -24,6 +24,7 @@ Click any folder below to jump straight to the writeups:
 - **[Flu.xxx CTF 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/flu.xxx_2026)**
 - **[HiCTF 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/ctf_hiddeninvestigations_2026)**
 - **[CSCTF 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/csctf_2026)**
+- **[CTF Techvisions 2026](https://github.com/vichhka-git/CTF-Writeup/tree/main/ctf-techvisions-2026)**
 
 ## How to Use This Repo
 1. Click any event folder above (or search for the folder name).
