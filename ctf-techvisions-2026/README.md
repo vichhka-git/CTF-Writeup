@@ -1,0 +1,26 @@
+# TVX CTF 2026 — Human Reproduction Notes
+
+One file per solved challenge. Each file contains only human-reproduction steps and the final flag.
+
+- [5 — tracevx (DFIR)](05_tracevx.md)
+- [12 — Steve's Lost Book (Crypto)](12_steves_lost_book.md)
+- [14 — Creeper's Shared Prime (Crypto)](14_creepers_shared_prime.md)
+- [15 — The Browser Never Forgot (DFIR)](15_the_browser_never_forgot.md)
+- [16 — Digital Currencies (OSINT)](16_digital_currencies.md)
+- [23 — Ending (Reverse Engineering)](23_ending.md)
+- [24 — Steel and feathers (Reverse Engineering)](24_steel_and_feathers.md)
+- [25 — Summer is over (Reverse Engineering)](25_summer_is_over.md)
+- [26 — Twist me a twister (Reverse Engineering)](26_twist_me_a_twister.md)
+- [28 — Ghost in the Envars (DFIR)](28_ghost_in_the_envars.md)
+- [29 — Mission: Broken Trust (Cloud)](29_mission_broken_trust.md)
+- [30 — Ask Me (OSINT)](30_ask_me.md)
+- [33 — The Forgotten Tenant (Cloud)](33_the_forgotten_tenant.md)
+- [35 — The Forgotten Tenant - 2 (Cloud)](35_the_forgotten_tenant_2.md)
+- [36 — Unsorted Inventory (Crypto)](36_unsorted_inventory.md)
+- [40 — ender chest (Crypto)](40_ender_chest.md)
+- [46 — MalwareX (Malware)](46_malwarex.md)
+- [47 — MalwareX - 2 (Malware)](47_malwarex_2.md)
+- [48 — MalwareX - 3 (Malware)](48_malwarex_3.md)
+- [52 — MalwareX - 4 (Malware)](52_malwarex_4.md)
+- [53 — MalwareX - 5 (Malware)](53_malwarex_5.md)
+- [55 — the fourth portal (Crypto)](55_the_fourth_portal.md)
